@@ -14,7 +14,7 @@
 
 export const site = {
   name: "KOHRT STUDIO",
-  shortName: "Kohrt Studio",
+  shortName: "kohrt.studio",
   domain: "kohrt.studio",
   url: "https://kohrt.studio",
   claim: "Starke Websites. Faire Preise.",
