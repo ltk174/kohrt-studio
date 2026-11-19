@@ -248,7 +248,7 @@ export const workflow = {
 export const about = {
   eyebrow: "Über mich",
   headline: "Hi, ich bin *Lars-Timon.*",
-  lead: "Ich bin Lars-Timon Kohrt und der Kopf hinter Kohrt Studio.",
+  lead: "Ich bin Lars-Timon Kohrt und der Kopf hinter kohrt.studio.",
   paragraphs: [
     "Ich bin überzeugt: Ein professioneller Internetauftritt muss weder kompliziert noch unbezahlbar sein.",
     "Mit modernen Technologien, einem Gespür für gutes Design und effizienten Abläufen entwickle ich Websites, die Unternehmen überzeugend präsentieren – ohne unnötige Kosten und ohne komplizierte Prozesse.",
