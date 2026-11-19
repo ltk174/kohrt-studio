@@ -1,0 +1,17 @@
+{
+  "garten-landschaft": {
+    "width": 1440,
+    "height": 6161,
+    "mobileHeight": 9035
+  },
+  "handwerk-bau": {
+    "width": 1440,
+    "height": 5117,
+    "mobileHeight": 8055
+  },
+  "beauty-lifestyle": {
+    "width": 1440,
+    "height": 4048,
+    "mobileHeight": 5152
+  }
+}
