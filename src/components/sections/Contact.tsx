@@ -1,6 +1,4 @@
-import { Mail } from "lucide-react";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { MailLink } from "@/components/ui/MailLink";
 import { RichTitle } from "@/components/ui/RichTitle";
 import { InquiryWizard } from "./InquiryWizard";
 import { contact, contactSection } from "@/config/site";
@@ -53,15 +51,7 @@ export function Contact({ variant = "home", className }: { variant?: "home" | "p
               </ol>
 
               <div data-reveal className="mt-10 border-t border-cream/15 pt-8">
-                <p className="text-[0.85rem] text-cream/60">Lieber direkt per E-Mail?</p>
-                <MailLink
-                  subject="Projektanfrage"
-                  className="mt-2 inline-flex items-center gap-2.5 font-display text-[1.25rem] font-semibold text-cream underline decoration-sage decoration-2 underline-offset-[6px] transition-colors hover:text-sage"
-                >
-                  <Mail className="size-5" aria-hidden="true" />
-                  {contact.displayEmail}
-                </MailLink>
-                <p className="mt-4 max-w-sm text-[0.85rem] text-cream/60">{contact.responseNote}</p>
+                <p className="max-w-sm text-[0.95rem] text-cream/75">{contact.responseNote}</p>
               </div>
             </div>
 

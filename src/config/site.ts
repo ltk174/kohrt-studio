@@ -42,18 +42,29 @@ export const owner = {
 } as const;
 
 export const contact = {
-  /** Diese Adresse wird auf der Website angezeigt. */
-  displayEmail: "info@prodesign.studio",
-  /**
-   * An diese Adresse gehen Formular- und Mail-Links (mailto).
-   * Achtung: Diese Adresse ist für Besucher sichtbar (im E-Mail-Programm).
-   * Deshalb hier bewusst keine private Adresse eintragen, sondern
-   * info@prodesign.studio einrichten und ggf. an das eigene Postfach weiterleiten.
+  /*
+   * Bewusst keine E-Mail-Adresse und keine Telefonnummer auf der Website.
+   * Kontaktdaten stehen ausschließlich im Impressum.
    */
-  recipientEmail: "info@prodesign.studio",
-  /** Telefonnummer bewusst leer – erst eintragen, wenn vorhanden. */
-  phone: "",
   responseNote: "Ich melde mich in der Regel innerhalb von ein bis zwei Werktagen persönlich bei dir.",
+} as const;
+
+/**
+ * Versand des Anfrage-Formulars über Web3Forms (https://web3forms.com).
+ * Die Website bleibt statisch – Web3Forms leitet die Anfrage per E-Mail weiter.
+ * Die Empfängeradresse ist NUR bei Web3Forms hinterlegt und erscheint weder
+ * auf der Website noch im Quellcode.
+ *
+ * Einrichtung (einmalig, ca. 1 Minute):
+ * 1. Auf web3forms.com die Empfängeradresse eingeben → Access Key kommt per E-Mail.
+ * 2. Key hier bei `accessKey` eintragen ODER in Vercel als Umgebungsvariable
+ *    `NEXT_PUBLIC_WEB3FORMS_KEY` hinterlegen (danach neu deployen).
+ * Der Access Key ist öffentlich unbedenklich – er verrät die E-Mail-Adresse nicht.
+ */
+export const formDelivery = {
+  endpoint: "https://api.web3forms.com/submit",
+  accessKey: "",
+  fromName: "prodesign.studio – Anfrage-Assistent",
 } as const;
 
 export const navigation = [
@@ -615,5 +626,5 @@ export const inquiry = {
     { value: "nein", label: "Nein, danke" },
   ],
   privacyNote:
-    "Beim Absenden öffnet sich dein E-Mail-Programm mit deiner vorbereiteten Anfrage. Auf dieser Website werden keine Daten gespeichert.",
+    "Deine Angaben werden verschlüsselt übermittelt und ausschließlich zur Bearbeitung deiner Anfrage verwendet. Mehr dazu in der Datenschutzerklärung.",
 } as const;

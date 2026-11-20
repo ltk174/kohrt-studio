@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Logo } from "@/components/brand/Logo";
-import { MailLink } from "@/components/ui/MailLink";
 import { contact, legalNavigation, navigation, owner, site } from "@/config/site";
 
 export function Footer() {
@@ -36,9 +35,6 @@ export function Footer() {
             <h2 className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-ink-muted">Kontakt</h2>
             <ul className="mt-5 space-y-3">
               <li className="text-ink">{owner.name}</li>
-              <li>
-                <MailLink className="text-ink underline decoration-sage decoration-2 underline-offset-4 transition-colors hover:text-forest" />
-              </li>
               <li>
                 <Link href="/kontakt/#anfrage" className="text-ink transition-colors hover:text-forest">
                   Kostenloser Erstentwurf

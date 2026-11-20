@@ -15,7 +15,7 @@ Gebaut mit Next.js 16 (App Router), TypeScript, Tailwind CSS 4 und Lucide-Icons.
 | `/leistungen/` | Erstentwurf, Leistungen, Preise, SEO, Zusatzleistungen, Ablauf, FAQ |
 | `/designstudien/` | Die drei Designstudien in großen, scrollbaren Vorschaufenstern |
 | `/ueber-mich/` | Persönliche Vorstellung mit Portrait, Arbeitsweise |
-| `/kontakt/` | Mehrstufiger Anfrage-Assistent (mailto) und FAQ |
+| `/kontakt/` | Mehrstufiger Anfrage-Assistent und FAQ |
 | `/impressum/`, `/datenschutz/` | **Platzhalter** – vor Veröffentlichung ausfüllen! |
 | `/vorschau/<studie>/` | Vollständige Demo-Seiten der Designstudien (nicht indexiert) |
 
@@ -26,7 +26,7 @@ Gebaut mit Next.js 16 (App Router), TypeScript, Tailwind CSS 4 und Lucide-Icons.
 
 - Text zwischen `*Sternchen*` in Überschriften wird als eleganter Akzent (kursive Serifenschrift in Grün) dargestellt.
 - Preise als Zahl pflegen (`price: 790`) – die Formatierung („790 €“) passiert automatisch.
-- `contact.displayEmail` ist die angezeigte Adresse, `contact.recipientEmail` die Adresse, an die Formular und Mail-Links gehen (beide `info@prodesign.studio`). Achtung: Die Empfängeradresse ist für Besucher im E-Mail-Programm sichtbar – keine private Adresse eintragen.
+- Auf der Website steht bewusst keine E-Mail-Adresse – Kontaktdaten nur im Impressum.
 - Die Antwortmöglichkeiten des Anfrage-Assistenten stehen unter `inquiry`, die Inhalte des 48-Stunden-Angebots unter `freeDraft`, der SEO-Bereich unter `seo`.
 
 ## Portraitfoto
@@ -76,11 +76,24 @@ Anschließend die Domain `prodesign.studio` in den Projekteinstellungen verbinde
 
 **Gewöhnliches Webhosting:** `npm run build` ausführen und den Inhalt des Ordners `out/` per FTP hochladen.
 
+## Anfrage-Formular einrichten (Web3Forms)
+
+Die Website hat keinen eigenen Server. Das Formular sendet die Antworten an den Formular-Dienst
+[Web3Forms](https://web3forms.com) (kostenlos bis 250 Anfragen/Monat), der sie per E-Mail weiterleitet.
+
+1. Auf [web3forms.com](https://web3forms.com) die Empfänger-E-Mail-Adresse eingeben und „Create Access Key“ klicken.
+2. Den Access Key aus der E-Mail kopieren.
+3. **Entweder** in Vercel unter *Settings → Environment Variables* als `NEXT_PUBLIC_WEB3FORMS_KEY` anlegen und neu deployen,
+   **oder** in `src/config/site.ts` bei `formDelivery.accessKey` eintragen.
+
+Der Access Key verrät die E-Mail-Adresse nicht und darf öffentlich sein. Ein unsichtbares Spam-Schutzfeld ist eingebaut.
+Web3Forms in der Datenschutzerklärung erwähnen.
+
 ## Technik & Datenschutz
 
 - Schriften (Manrope, Inter, Instrument Serif; in den Studien Cormorant Garamond, Archivo, Bodoni Moda, Jost) werden **lokal** ausgeliefert – keine Verbindung zu Google Fonts.
 - Keine Tracking-Tools, keine Cookies, keine externen Skripte.
-- Anfrage-Assistent ohne Server: 7 kurze Schritte, fast nur Klicks. Beim Absenden öffnet sich das E-Mail-Programm mit einer strukturierten Anfrage inklusive **KI-Briefing** – dieser Absatz kann direkt in ein KI-Werkzeug kopiert werden, um den ersten Designentwurf zu erstellen.
+- Anfrage-Assistent: 7 kurze Schritte, fast nur Klicks. Beim Klick auf „Erstentwurf anfordern“ wird die Anfrage direkt über **Web3Forms** per E-Mail zugestellt – ohne E-Mail-Programm, die Empfängeradresse ist nirgends sichtbar. Die E-Mail enthält eine strukturierte Übersicht und ein **KI-Briefing**, das direkt in ein KI-Werkzeug kopiert werden kann.
 - Animationen respektieren `prefers-reduced-motion`.
 - SEO: Metadaten pro Seite, Open Graph, `sitemap.xml`, `robots.txt`, strukturierte Daten (schema.org).
 
@@ -89,5 +102,5 @@ Anschließend die Domain `prodesign.studio` in den Projekteinstellungen verbinde
 - [ ] Impressum und Datenschutzerklärung mit rechtlich geprüften Angaben füllen
 - [ ] Portraitfoto ablegen
 - [ ] Domain `prodesign.studio` registrieren und mit Vercel verbinden
-- [ ] E-Mail-Adresse `info@prodesign.studio` einrichten (ggf. Weiterleitung ins eigene Postfach) – vorher kommen keine Anfragen an!
+- [ ] Web3Forms-Access-Key einrichten (siehe unten) – vorher kommen keine Anfragen an!
 - [ ] Inhalte und Preise final prüfen

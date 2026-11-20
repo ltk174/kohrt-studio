@@ -8,7 +8,6 @@ import {
   Briefcase,
   CalendarCheck,
   Check,
-  Copy,
   Ellipsis,
   Hammer,
   Inbox,
@@ -29,7 +28,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { contact, freeDraft, inquiry } from "@/config/site";
+import { formDelivery, freeDraft, inquiry } from "@/config/site";
 import { cn } from "@/lib/format";
 
 /* ------------------------------------------------------------------ */
@@ -202,8 +201,9 @@ const noopSubscribe = () => () => {};
 
 /**
  * Mehrstufiger Anfrage-Assistent für den kostenlosen Erstentwurf.
- * Fast nur Klicks, kaum Tippen. Beim Absenden wird eine vorbereitete
- * E-Mail mit strukturiertem Briefing geöffnet (mailto, kein Server).
+ * Fast nur Klicks, kaum Tippen. Beim Absenden wird die Anfrage samt
+ * strukturiertem KI-Briefing direkt über Web3Forms per E-Mail zugestellt –
+ * ohne E-Mail-Programm und ohne dass die Empfängeradresse sichtbar ist.
  */
 export function InquiryWizard({ className }: { className?: string }) {
   const preset = useSyncExternalStore(
@@ -217,7 +217,9 @@ export function InquiryWizard({ className }: { className?: string }) {
   const [stepIndex, setStepIndex] = useState(0);
   const [errors, setErrors] = useState<Partial<Record<keyof Answers, string>>>({});
   const [sent, setSent] = useState(false);
-  const [copied, setCopied] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState("");
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   const rootRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -285,7 +287,7 @@ export function InquiryWizard({ className }: { className?: string }) {
     if (errors[field]) setErrors((current) => ({ ...current, [field]: undefined }));
   };
 
-  const submit = (event: React.FormEvent<HTMLFormElement>) => {
+  const submit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (step.id !== "kontakt") {
       next();
@@ -298,20 +300,40 @@ export function InquiryWizard({ className }: { className?: string }) {
       rootRef.current?.querySelector<HTMLElement>(`[name="${first}"]`)?.focus();
       return;
     }
+    if (sending) return;
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || formDelivery.accessKey;
+    if (!accessKey) {
+      setSendError("Das Formular ist noch nicht vollständig eingerichtet. Bitte versuche es später noch einmal.");
+      return;
+    }
     const { subject, body } = buildBriefing(values);
-    const [user, domain] = contact.recipientEmail.split("@");
-    window.location.assign(`mailto:${user}@${domain}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
-    hasNavigated.current = true;
-    setSent(true);
-  };
-
-  const copyBriefing = async () => {
+    setSending(true);
+    setSendError("");
     try {
-      const { subject, body } = buildBriefing(values);
-      await navigator.clipboard.writeText(`${subject}\n\n${body}`);
-      setCopied(true);
+      const response = await fetch(formDelivery.endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject,
+          from_name: formDelivery.fromName,
+          name: values.name.trim(),
+          email: values.email.trim(),
+          unternehmen: values.company.trim(),
+          message: body,
+          botcheck: honeypotRef.current?.checked ?? false,
+        }),
+      });
+      const result = (await response.json().catch(() => null)) as { success?: boolean } | null;
+      if (!response.ok || !result?.success) throw new Error("Versand fehlgeschlagen");
+      hasNavigated.current = true;
+      setSent(true);
     } catch {
-      setCopied(false);
+      setSendError(
+        "Deine Anfrage konnte leider nicht gesendet werden. Bitte prüfe deine Internetverbindung und versuche es noch einmal.",
+      );
+    } finally {
+      setSending(false);
     }
   };
 
@@ -323,33 +345,28 @@ export function InquiryWizard({ className }: { className?: string }) {
           <MailCheck className="size-6" aria-hidden="true" />
         </span>
         <h3 ref={headingRef} tabIndex={-1} className="mt-6 font-display text-display-sm font-semibold outline-none" role="status">
-          Fast geschafft!
+          Vielen Dank, {values.name.trim().split(" ")[0]}!
         </h3>
         <p className="mt-4 text-ink-soft">
-          Dein E-Mail-Programm sollte sich jetzt mit deiner vorbereiteten Anfrage geöffnet haben. Du musst sie dort nur noch
-          absenden – dann mache ich mich an deinen kostenlosen Erstentwurf.
+          Deine Anfrage ist bei mir angekommen. Ich mache mich jetzt an deinen kostenlosen Erstentwurf für{" "}
+          <strong className="font-semibold text-ink">{values.company.trim()}</strong>. Er kann bereits innerhalb von{" "}
+          {freeDraft.hours} Stunden bei dir sein – ich melde mich unter der angegebenen E-Mail-Adresse.
         </p>
-        <div className="mt-8 rounded-2xl bg-cream p-5 text-[0.92rem] text-ink-soft">
-          <p>
-            Es hat sich nichts geöffnet? Kopiere deine Anfrage und sende sie an{" "}
-            <strong className="font-semibold text-ink">{contact.displayEmail}</strong>.
-          </p>
-          <button
-            type="button"
-            onClick={copyBriefing}
-            className="mt-4 inline-flex items-center gap-2 rounded-full border border-line-strong bg-paper px-4 py-2 font-display text-[0.85rem] font-semibold text-ink transition-colors hover:bg-mint"
-          >
-            {copied ? <Check className="size-4" aria-hidden="true" /> : <Copy className="size-4" aria-hidden="true" />}
-            {copied ? "Anfrage kopiert" : "Anfrage kopieren"}
-          </button>
-        </div>
-        <button
-          type="button"
-          onClick={() => setSent(false)}
-          className="mt-6 text-[0.9rem] font-medium text-ink underline decoration-sage decoration-2 underline-offset-4"
-        >
-          Zurück zur Anfrage
-        </button>
+        <ul className="mt-8 space-y-3 rounded-2xl bg-cream p-5 text-[0.92rem] text-ink-soft">
+          {["Anfrage erhalten", "Erstentwurf wird gestaltet", "Du erhältst deinen Designvorschlag per E-Mail"].map((item, index) => (
+            <li key={item} className="flex items-center gap-3">
+              <span
+                className={cn(
+                  "grid size-6 shrink-0 place-items-center rounded-full text-[0.75rem] font-semibold",
+                  index === 0 ? "bg-forest text-cream" : "border border-line-strong text-ink-muted",
+                )}
+              >
+                {index === 0 ? <Check className="size-3.5" strokeWidth={3} aria-hidden="true" /> : index + 1}
+              </span>
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
@@ -622,9 +639,12 @@ export function InquiryWizard({ className }: { className?: string }) {
           </div>
         </div>
 
-        {/* Fehlermeldung des Schritts */}
-        <p aria-live="polite" className="mt-6 min-h-6 text-[0.9rem] font-medium text-[#A4432F]">
-          {step.id !== "kontakt" ? errorText : ""}
+        {/* Spam-Schutz (für Menschen unsichtbar) */}
+        <input ref={honeypotRef} type="checkbox" name="botcheck" tabIndex={-1} aria-hidden="true" className="hidden" />
+
+        {/* Fehlermeldung des Schritts bzw. des Versands */}
+        <p aria-live="polite" role={sendError ? "alert" : undefined} className="mt-6 min-h-6 text-[0.9rem] font-medium text-[#A4432F]">
+          {step.id !== "kontakt" ? errorText : sendError}
         </p>
 
         {/* Navigation */}
@@ -642,7 +662,9 @@ export function InquiryWizard({ className }: { className?: string }) {
             <span className="text-[0.85rem] text-ink-muted">Kostenlos & unverbindlich</span>
           )}
           {step.id === "kontakt" ? (
-            <Button type="submit">Erstentwurf anfordern</Button>
+            <Button type="submit" disabled={sending} aria-busy={sending}>
+              {sending ? "Wird gesendet …" : "Erstentwurf anfordern"}
+            </Button>
           ) : (
             <button
               type="submit"

@@ -14,7 +14,7 @@ export default function PrivacyPage() {
       items={[
         "Verantwortliche Stelle mit Kontaktdaten",
         "Hosting-Anbieter und Server-Logfiles",
-        "Kontaktaufnahme per E-Mail bzw. Kontaktformular (mailto)",
+        "Anfrage-Formular: Übermittlung der Angaben über den Formular-Dienst Web3Forms (Auftragsverarbeitung, Zweck, Speicherdauer, ggf. Drittlandübermittlung)",
         "Rechte der betroffenen Personen",
         "Hinweis: Diese Website lädt Schriften lokal, setzt keine Tracking-Tools und keine Cookies ein (Stand der ersten Version – bitte vor Veröffentlichung prüfen)",
       ]}
