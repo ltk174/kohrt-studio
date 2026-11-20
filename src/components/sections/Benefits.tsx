@@ -76,7 +76,10 @@ function PersonalVisual() {
     <div aria-hidden="true" className="relative w-full max-w-[22rem] space-y-3">
       <div className="flex items-center gap-4 rounded-2xl bg-cream/[0.08] p-4 ring-1 ring-cream/10">
         <span className="grid size-12 shrink-0 place-items-center rounded-full bg-sage font-display text-[1rem] font-bold text-ink">
-          LK
+          {owner.name
+            .split(" ")
+            .map((part) => part[0])
+            .join("")}
         </span>
         <div className="min-w-0">
           <p className="font-display font-semibold text-cream">{owner.name}</p>

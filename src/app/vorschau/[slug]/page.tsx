@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
-import { studies, studiesSection, type StudySlug } from "@/config/site";
+import { site, studies, studiesSection, type StudySlug } from "@/config/site";
 import { GardenStudy } from "@/components/studies/GardenStudy";
 import { CraftStudy } from "@/components/studies/CraftStudy";
 import { BeautyStudy } from "@/components/studies/BeautyStudy";
@@ -48,7 +48,7 @@ export default async function PreviewPage({ params }: { params: Promise<{ slug: 
             className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[#202522] px-3.5 py-2 font-semibold text-[#F8F7F3] transition-colors hover:bg-[#34483D]"
           >
             <ArrowLeft className="size-3.5" aria-hidden="true" />
-            kohrt.studio
+            {site.domain}
           </Link>
           <span className="truncate">
             <strong className="font-semibold">{studiesSection.label}</strong>

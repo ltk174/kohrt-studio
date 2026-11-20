@@ -1,7 +1,7 @@
-# KOHRT STUDIO – kohrt.studio
+# PRODESIGN STUDIO – prodesign.studio
 
 **Starke Websites. Faire Preise.**
-Website der Webdesign-Agentur von Lars-Timon Kohrt.
+Website der Webdesign-Agentur Prodesign Studio (öffentlicher Name: Alexander Engel).
 
 Gebaut mit Next.js 16 (App Router), TypeScript, Tailwind CSS 4 und Lucide-Icons. Die Seite wird **statisch exportiert** und läuft damit auf Vercel genauso wie auf gewöhnlichem Webhosting.
 
@@ -11,11 +11,11 @@ Gebaut mit Next.js 16 (App Router), TypeScript, Tailwind CSS 4 und Lucide-Icons.
 
 | Pfad | Inhalt |
 | --- | --- |
-| `/` | Startseite: Hero, Vorteile, Designstudien, Preise, Über mich, Ablauf, FAQ, Kontakt |
-| `/leistungen/` | Leistungen, Preise, Zusatzleistungen, Ablauf, FAQ |
+| `/` | Startseite: Hero, kostenloser Erstentwurf (48 h), Vorteile, Designstudien, Preise, SEO, Über mich, Ablauf, FAQ, Anfrage-Assistent |
+| `/leistungen/` | Erstentwurf, Leistungen, Preise, SEO, Zusatzleistungen, Ablauf, FAQ |
 | `/designstudien/` | Die drei Designstudien in großen, scrollbaren Vorschaufenstern |
 | `/ueber-mich/` | Persönliche Vorstellung mit Portrait, Arbeitsweise |
-| `/kontakt/` | Kontaktformular (mailto) und FAQ |
+| `/kontakt/` | Mehrstufiger Anfrage-Assistent (mailto) und FAQ |
 | `/impressum/`, `/datenschutz/` | **Platzhalter** – vor Veröffentlichung ausfüllen! |
 | `/vorschau/<studie>/` | Vollständige Demo-Seiten der Designstudien (nicht indexiert) |
 
@@ -25,12 +25,13 @@ Gebaut mit Next.js 16 (App Router), TypeScript, Tailwind CSS 4 und Lucide-Icons.
 [`src/config/site.ts`](src/config/site.ts).** Die Komponenten lesen nur aus dieser Datei.
 
 - Text zwischen `*Sternchen*` in Überschriften wird als eleganter Akzent (kursive Serifenschrift in Grün) dargestellt.
-- Preise als Zahl pflegen (`price: 1490`) – die Formatierung („1.490 €“) passiert automatisch.
-- `contact.displayEmail` ist die angezeigte Adresse (`info@kohrt.studio`), `contact.recipientEmail` die Adresse, an die Formular und Mail-Links tatsächlich gehen.
+- Preise als Zahl pflegen (`price: 790`) – die Formatierung („790 €“) passiert automatisch.
+- `contact.displayEmail` ist die angezeigte Adresse, `contact.recipientEmail` die Adresse, an die Formular und Mail-Links gehen (beide `info@prodesign.studio`). Achtung: Die Empfängeradresse ist für Besucher im E-Mail-Programm sichtbar – keine private Adresse eintragen.
+- Die Antwortmöglichkeiten des Anfrage-Assistenten stehen unter `inquiry`, die Inhalte des 48-Stunden-Angebots unter `freeDraft`, der SEO-Bereich unter `seo`.
 
 ## Portraitfoto
 
-Foto als **`public/images/lars-timon-kohrt.jpg`** ablegen (empfohlen: Hochformat 4:5, z. B. 1200 × 1500 px, gut komprimiert < 300 KB).
+Foto als **`public/images/alexander-engel.jpg`** ablegen (empfohlen: Hochformat 4:5, z. B. 1200 × 1500 px, gut komprimiert < 300 KB).
 Beim nächsten Build wird es automatisch verwendet – bis dahin erscheint eine gestaltete Platzhalterfläche.
 
 ## Designstudien & Screenshots
@@ -71,7 +72,7 @@ npm run check
 ## Veröffentlichung
 
 **Vercel:** Repository in Vercel importieren – das Framework (Next.js) wird automatisch erkannt, keine weiteren Einstellungen nötig.
-Anschließend die Domain `kohrt.studio` in den Projekteinstellungen verbinden.
+Anschließend die Domain `prodesign.studio` in den Projekteinstellungen verbinden.
 
 **Gewöhnliches Webhosting:** `npm run build` ausführen und den Inhalt des Ordners `out/` per FTP hochladen.
 
@@ -79,7 +80,7 @@ Anschließend die Domain `kohrt.studio` in den Projekteinstellungen verbinden.
 
 - Schriften (Manrope, Inter, Instrument Serif; in den Studien Cormorant Garamond, Archivo, Bodoni Moda, Jost) werden **lokal** ausgeliefert – keine Verbindung zu Google Fonts.
 - Keine Tracking-Tools, keine Cookies, keine externen Skripte.
-- Kontaktformular ohne Server: Beim Absenden öffnet sich das E-Mail-Programm mit vorausgefüllter Nachricht.
+- Anfrage-Assistent ohne Server: 7 kurze Schritte, fast nur Klicks. Beim Absenden öffnet sich das E-Mail-Programm mit einer strukturierten Anfrage inklusive **KI-Briefing** – dieser Absatz kann direkt in ein KI-Werkzeug kopiert werden, um den ersten Designentwurf zu erstellen.
 - Animationen respektieren `prefers-reduced-motion`.
 - SEO: Metadaten pro Seite, Open Graph, `sitemap.xml`, `robots.txt`, strukturierte Daten (schema.org).
 
@@ -87,6 +88,6 @@ Anschließend die Domain `kohrt.studio` in den Projekteinstellungen verbinden.
 
 - [ ] Impressum und Datenschutzerklärung mit rechtlich geprüften Angaben füllen
 - [ ] Portraitfoto ablegen
-- [ ] E-Mail-Adresse `info@kohrt.studio` einrichten (danach `recipientEmail` in `site.ts` umstellen)
-- [ ] Domain `kohrt.studio` registrieren und mit Vercel verbinden
+- [ ] Domain `prodesign.studio` registrieren und mit Vercel verbinden
+- [ ] E-Mail-Adresse `info@prodesign.studio` einrichten (ggf. Weiterleitung ins eigene Postfach) – vorher kommen keine Anfragen an!
 - [ ] Inhalte und Preise final prüfen

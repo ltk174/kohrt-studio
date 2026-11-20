@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Info } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { StudyDetail } from "@/components/sections/StudyDetail";
-import { CtaBand } from "@/components/sections/CtaBand";
+import { FreeDraft } from "@/components/sections/FreeDraft";
 import { studies, studiesSection } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -31,10 +31,7 @@ export default function StudiesPage() {
           ))}
         </div>
       </section>
-      <CtaBand
-        title="Gefällt dir, was du siehst? Lass uns *deine Website* gestalten."
-        text="Jede Website entsteht individuell – passend zu deinem Unternehmen und deinem Budget."
-      />
+      <FreeDraft />
     </>
   );
 }

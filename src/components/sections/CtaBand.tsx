@@ -5,7 +5,7 @@ import { cn } from "@/lib/format";
 /** Abschließender Handlungsaufruf für Unterseiten */
 export function CtaBand({
   title = "Lass uns über deine *neue Website* sprechen.",
-  text = "Unverbindlich, persönlich und mit einem klaren Angebot zum Fixpreis.",
+  text = "Starte mit einem kostenlosen Erstentwurf – unverbindlich und oft schon nach 48 Stunden bei dir.",
   className,
 }: {
   title?: string;
@@ -24,8 +24,8 @@ export function CtaBand({
           </h2>
           <div className="lg:col-span-4 lg:text-right">
             <p className="text-ink-soft">{text}</p>
-            <ButtonLink href="/kontakt/" size="lg" className="mt-6">
-              Projekt anfragen
+            <ButtonLink href="/kontakt/#anfrage" size="lg" className="mt-6">
+              Kostenlosen Erstentwurf erhalten
             </ButtonLink>
           </div>
         </div>

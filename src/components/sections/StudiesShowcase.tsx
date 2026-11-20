@@ -67,8 +67,8 @@ export function StudiesShowcase() {
                 Kein Problem. Die Studien zeigen nur, was möglich ist. Deine Website gestalte ich individuell – passend zu
                 deinem Unternehmen, deinen Kunden und deinem Stil.
               </p>
-              <ButtonLink href="/kontakt/" className="mt-8">
-                Website anfragen
+              <ButtonLink href="/kontakt/#anfrage" className="mt-8">
+                Kostenlosen Entwurf erhalten
               </ButtonLink>
             </div>
           </div>

@@ -40,8 +40,8 @@ export function ButtonLink({
     <Link
       href={href}
       className={cn(
-        "group inline-flex items-center justify-center gap-3 rounded-full font-display font-semibold tracking-[-0.01em] transition-colors duration-300",
-        size === "lg" ? "h-14 pl-7 pr-2 text-[1.02rem]" : "h-12 pl-6 pr-1.5 text-[0.95rem]",
+        "group inline-flex items-center justify-center gap-3 rounded-full text-left font-display leading-tight font-semibold tracking-[-0.01em] transition-colors duration-300",
+        size === "lg" ? "min-h-14 py-2 pl-7 pr-2 text-[1.02rem]" : "min-h-12 py-1.5 pl-6 pr-1.5 text-[0.95rem]",
         !icon && (size === "lg" ? "pr-7" : "pr-6"),
         styles[variant],
         className,
@@ -53,7 +53,7 @@ export function ButtonLink({
         <span
           aria-hidden="true"
           className={cn(
-            "grid place-items-center overflow-hidden rounded-full transition-transform duration-500 ease-[var(--ease-out-soft)] group-hover:rotate-45",
+            "grid shrink-0 place-items-center overflow-hidden rounded-full transition-transform duration-500 ease-[var(--ease-out-soft)] group-hover:rotate-45",
             size === "lg" ? "size-10" : "size-9",
             iconStyles[variant],
           )}

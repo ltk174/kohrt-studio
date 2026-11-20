@@ -28,7 +28,7 @@ const html = `<!doctype html><html><head><style>
 @font-face{font-family:Instrument;font-style:italic;src:url(${font("@fontsource/instrument-serif/files/instrument-serif-latin-400-italic.woff2")})}
 *{margin:0;box-sizing:border-box}
 body{width:1200px;height:630px;background:#F8F7F3;font-family:Inter;color:#202522;position:relative;overflow:hidden}
-.logo{position:absolute;left:72px;top:64px;width:200px}
+.logo{position:absolute;left:72px;top:60px;width:260px}
 h1{position:absolute;left:72px;top:190px;font-family:Manrope;font-weight:600;font-size:80px;line-height:.98;letter-spacing:-.045em}
 h1 em{display:block;font-family:Instrument;font-weight:400;color:#34483D;letter-spacing:-.01em;padding-left:60px}
 p{position:absolute;left:72px;bottom:70px;font-size:24px;color:#4b534e}

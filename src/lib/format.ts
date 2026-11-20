@@ -1,4 +1,4 @@
-/** Formatiert einen Preis im deutschen Format, z. B. 1490 → „1.490 €“. */
+/** Formatiert einen Preis im deutschen Format, z. B. 790 → „790 €“. */
 export function formatPrice(value: number): string {
   return `${new Intl.NumberFormat("de-DE", { maximumFractionDigits: 0 }).format(value)} €`;
 }

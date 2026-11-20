@@ -1,13 +1,15 @@
-import { ArrowUpRight, Check, LayoutTemplate, MonitorSmartphone, RefreshCcw, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, Check, Clock, LayoutTemplate, MonitorSmartphone, RefreshCcw, Search, ShieldCheck } from "lucide-react";
+import { ButtonLink } from "@/components/ui/Button";
 import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RichTitle } from "@/components/ui/RichTitle";
-import { extras, services } from "@/config/site";
+import { extras, freeDraft, services } from "@/config/site";
 
 const icons = {
   "neue-website": MonitorSmartphone,
   modernisierung: RefreshCcw,
   landingpage: LayoutTemplate,
+  seo: Search,
   betreuung: ShieldCheck,
 } as const;
 
@@ -18,12 +20,13 @@ export function Services() {
         <SectionHeading
           id="leistungen-title"
           eyebrow="Was ich für dich mache"
-          title={<RichTitle text="Vier Wege zu deinem *starken Auftritt.*" />}
+          title={<RichTitle text="So bringe ich dein Unternehmen *nach vorn.*" />}
         />
-        <div className="mt-14 grid gap-5 md:grid-cols-2">
+        <div className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {services.map((service, index) => {
             const Icon = icons[service.key];
-            const href = service.key === "betreuung" ? "/kontakt/?leistung=sonstiges" : `/kontakt/?leistung=${service.key}`;
+            const isProjectType = ["neue-website", "modernisierung", "landingpage"].includes(service.key);
+            const href = `/kontakt/?leistung=${isProjectType ? service.key : "sonstiges"}#anfrage`;
             return (
               <article
                 key={service.key}
@@ -60,6 +63,26 @@ export function Services() {
               </article>
             );
           })}
+          <article
+            data-reveal
+            className="relative flex flex-col justify-between overflow-hidden rounded-[var(--radius-card)] bg-forest p-7 text-cream sm:p-10"
+          >
+            <div>
+              <span className="grid size-14 place-items-center rounded-2xl bg-cream/10 text-sage">
+                <Clock className="size-6" strokeWidth={1.6} aria-hidden="true" />
+              </span>
+              <h3 className="mt-10 font-display text-[1.6rem] font-semibold tracking-[-0.03em] text-cream">
+                Kostenloser Erstentwurf
+              </h3>
+              <p className="mt-3 max-w-md text-cream/75">
+                Unsicher, was du brauchst? Starte einfach mit einem kostenlosen Designvorschlag – er kann innerhalb von{" "}
+                {freeDraft.hours} Stunden bei dir sein.
+              </p>
+            </div>
+            <ButtonLink href={freeDraft.cta.href} variant="light" className="mt-10 w-fit">
+              Erstentwurf erhalten
+            </ButtonLink>
+          </article>
         </div>
       </div>
     </section>

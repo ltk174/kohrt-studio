@@ -21,7 +21,9 @@ export const metadata: Metadata = {
     "Webdesign Fixpreis",
     "Website für Handwerker",
     "Website für kleine Unternehmen",
-    "Kohrt Studio",
+    "SEO-Optimierung",
+    "kostenloser Webdesign-Entwurf",
+    "Prodesign Studio",
   ],
   alternates: { canonical: "/" },
   openGraph: {

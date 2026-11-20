@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------
-   KOHRT STUDIO – Designsystem
+   PRODESIGN STUDIO – Designsystem
    Farben, Typografie und Bewegungen als zentrale Design-Tokens.
    ------------------------------------------------------------------ */
 
@@ -95,7 +95,7 @@
     -webkit-text-size-adjust: 100%;
     overflow-x: clip;
     text-rendering: optimizeLegibility;
-    scroll-padding-top: 6.5rem;
+    scroll-padding-top: 8rem;
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -191,6 +191,22 @@
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+/* Schrittwechsel im Anfrage-Assistenten */
+@keyframes wizard-in {
+  from {
+    opacity: 0;
+    transform: translate3d(14px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.wizard-step {
+  animation: wizard-in 0.5s var(--ease-out-soft) both;
 }
 
 /* ------------------------------------------------------------------ */

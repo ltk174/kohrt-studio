@@ -5,8 +5,8 @@ import { owner } from "@/config/site";
 import { cn } from "@/lib/format";
 
 /**
- * Portrait von Lars-Timon Kohrt.
- * Beim Build wird geprüft, ob `public/images/lars-timon-kohrt.jpg` existiert.
+ * Portraitfoto (Pfad in `owner.portrait.src`, aktuell `public/images/alexander-engel.jpg`).
+ * Beim Build wird geprüft, ob die Datei existiert.
  * Fehlt die Datei, erscheint automatisch eine gestaltete Platzhalterfläche.
  */
 export function Portrait({ className, priority = false }: { className?: string; priority?: boolean }) {

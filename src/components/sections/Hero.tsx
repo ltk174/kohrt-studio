@@ -1,7 +1,7 @@
-import { Check, Monitor, Smartphone, Tablet } from "lucide-react";
+import { Check, Clock } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
 import { BrowserFrame } from "@/components/ui/BrowserFrame";
-import { hero, pricing } from "@/config/site";
+import { freeDraft, hero, pricing } from "@/config/site";
 import { formatPrice } from "@/lib/format";
 import { getScreenshot, getStudy } from "@/lib/studies";
 
@@ -140,12 +140,14 @@ export function Hero() {
                   {formatPrice(pricing.website.price)}
                 </p>
               </div>
-              {/* Geräte-Chip */}
-              <div className="absolute bottom-[34%] right-[22%] hidden items-center gap-2 rounded-full border border-line bg-paper/95 px-3.5 py-2 text-ink shadow-lift backdrop-blur sm:flex">
-                <Monitor className="size-4" aria-hidden="true" />
-                <Tablet className="size-4" aria-hidden="true" />
-                <Smartphone className="size-4" aria-hidden="true" />
-                <span className="ml-1 font-display text-[0.78rem] font-semibold">Responsive</span>
+              {/* Erstentwurf-Chip */}
+              <div className="absolute bottom-[34%] right-[20%] hidden items-center gap-2.5 rounded-full bg-sage py-2 pl-2 pr-4 text-ink shadow-lift sm:flex">
+                <span className="grid size-7 place-items-center rounded-full bg-ink text-cream">
+                  <Clock className="size-3.5" aria-hidden="true" />
+                </span>
+                <span className="font-display text-[0.8rem] font-semibold">
+                  Erstentwurf in {freeDraft.hours} h · kostenlos
+                </span>
               </div>
             </div>
           </div>
