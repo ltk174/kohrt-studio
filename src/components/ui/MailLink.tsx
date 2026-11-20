@@ -6,7 +6,7 @@ import { contact } from "@/config/site";
 const subscribe = () => () => {};
 
 /**
- * Zeigt die öffentliche Kontaktadresse (info@kohrt.studio) an und
+ * Zeigt die öffentliche Kontaktadresse (contact.displayEmail) an und
  * verlinkt auf die tatsächliche Empfängeradresse. Der mailto-Link wird erst
  * im Browser zusammengesetzt, damit die Adresse nicht im HTML steht
  * (Schutz vor einfachen Spam-Robotern).

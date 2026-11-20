@@ -1,4 +1,4 @@
-import { LOGO_DOT, LOGO_KOHRT, LOGO_STUDIO, LOGO_VIEWBOX } from "./logo-paths";
+import { LOGO_DOT, LOGO_MAIN, LOGO_STUDIO, LOGO_VIEWBOX } from "./logo-paths";
 import { cn } from "@/lib/format";
 
 type LogoProps = {
@@ -8,13 +8,13 @@ type LogoProps = {
   title?: string;
 };
 
-/** Typografisches Logo „kohrt.studio“ als Inline-SVG (umgewandelte Manrope-Glyphen). */
-export function Logo({ className, tone = "dark", title = "kohrt.studio" }: LogoProps) {
+/** Typografisches Logo „prodesign.studio“ als Inline-SVG (umgewandelte Manrope-Glyphen). */
+export function Logo({ className, tone = "dark", title = "prodesign.studio" }: LogoProps) {
   const primary = tone === "dark" ? "#202522" : "#F8F7F3";
   const secondary = tone === "dark" ? "#34483D" : "#E6EDE5";
   return (
     <svg viewBox={LOGO_VIEWBOX} className={cn("h-auto", className)} role="img" aria-label={title}>
-      <path fill={primary} d={LOGO_KOHRT} />
+      <path fill={primary} d={LOGO_MAIN} />
       <circle fill="#A9BBAA" cx={LOGO_DOT.cx} cy={LOGO_DOT.cy} r={LOGO_DOT.r} />
       <path fill={secondary} d={LOGO_STUDIO} />
     </svg>

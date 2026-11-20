@@ -96,6 +96,7 @@ export function Pricing({ headingLevel = "h2" }: { headingLevel?: "h1" | "h2" })
 
             <div className="mt-10 flex flex-wrap items-end gap-x-4 gap-y-2 border-b border-cream/15 pb-10">
               <p className="font-display font-semibold leading-none">
+                {care.priceFrom && <span className="mr-2 align-top text-[1.1rem] text-cream/60">ab</span>}
                 <span className="text-[clamp(3.6rem,2.6rem+4vw,5.6rem)] tracking-[-0.05em]">{formatPrice(care.price)}</span>
               </p>
               <p className="pb-2 text-[0.95rem] leading-snug text-cream/65">
@@ -116,7 +117,9 @@ export function Pricing({ headingLevel = "h2" }: { headingLevel?: "h1" | "h2" })
               ))}
             </ul>
 
-            <p className="mt-8 text-[0.85rem] leading-relaxed text-cream/60">{care.fairUse}</p>
+            <p className="mt-8 text-[0.85rem] leading-relaxed text-cream/60">
+              {care.scopeNote} {care.fairUse}
+            </p>
 
             <div className="mt-auto pt-8">
               <p className="rounded-2xl bg-cream/[0.08] px-5 py-4 text-[0.95rem] text-cream/90 ring-1 ring-cream/10">{care.note}</p>

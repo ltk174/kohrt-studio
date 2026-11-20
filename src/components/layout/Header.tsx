@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, Sparkles, X } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { MailLink } from "@/components/ui/MailLink";
 import { contact, cta, navigation, site } from "@/config/site";
@@ -90,7 +90,7 @@ export function Header() {
           )}
         >
           <Link href="/" className="relative z-10 -m-2 shrink-0 p-2" aria-label={`${site.shortName} – zur Startseite`}>
-            <Logo className="w-[8.6rem] sm:w-[9.4rem]" title="" />
+            <Logo className="w-[9.4rem] sm:w-[10.5rem] lg:w-[9.6rem] xl:w-[11.5rem]" title="" />
           </Link>
 
           <nav aria-label="Hauptnavigation" className="hidden lg:block">
@@ -103,7 +103,7 @@ export function Header() {
                       href={item.href}
                       aria-current={active ? "page" : undefined}
                       className={cn(
-                        "relative block whitespace-nowrap rounded-full px-3.5 py-2 font-display text-[0.92rem] font-medium transition-colors duration-300 xl:px-4",
+                        "relative block whitespace-nowrap rounded-full px-3 py-2 font-display text-[0.9rem] font-medium transition-colors duration-300 xl:px-4 xl:text-[0.92rem]",
                         active ? "bg-ink text-cream" : "text-ink-soft hover:bg-mint hover:text-ink",
                       )}
                     >
@@ -118,9 +118,10 @@ export function Header() {
           <div className="flex items-center gap-2">
             <Link
               href={cta.primary.href}
-              className="group hidden h-11 items-center gap-2 whitespace-nowrap rounded-full bg-ink pl-5 pr-1.5 font-display text-[0.92rem] font-semibold text-cream transition-colors duration-300 hover:bg-forest sm:inline-flex lg:hidden xl:inline-flex"
+              className="group hidden h-11 items-center gap-2 whitespace-nowrap rounded-full bg-ink pl-5 pr-1.5 font-display text-[0.9rem] font-semibold text-cream transition-colors duration-300 hover:bg-forest sm:inline-flex"
             >
-              {cta.primary.label}
+              <span className="lg:hidden xl:inline">{cta.primary.label}</span>
+              <span className="hidden lg:inline xl:hidden">{cta.primary.shortLabel}</span>
               <span className="grid size-8 place-items-center rounded-full bg-sage text-ink transition-transform duration-500 group-hover:rotate-45">
                 <ArrowUpRight className="size-4" strokeWidth={2.2} aria-hidden="true" />
               </span>
@@ -138,6 +139,15 @@ export function Header() {
             </button>
           </div>
         </div>
+        {/* Smartphone: immer sichtbarer Handlungsaufruf unter der Kopfzeile */}
+        <Link
+          href={cta.primary.href}
+          className="flex h-11 items-center justify-center gap-2 bg-forest px-4 font-display text-[0.88rem] font-semibold text-cream transition-colors hover:bg-forest-deep sm:hidden"
+        >
+          <Sparkles className="size-4 shrink-0 text-sage" aria-hidden="true" />
+          <span className="truncate">{cta.primary.label}</span>
+          <ArrowUpRight className="size-4 shrink-0" aria-hidden="true" />
+        </Link>
       </div>
 
       {/* Mobiles Menü */}
@@ -147,7 +157,7 @@ export function Header() {
         hidden={!open}
         className={cn(
           "fixed inset-x-0 bottom-0 overflow-y-auto border-t border-line bg-cream lg:hidden",
-          scrolled ? "top-16" : "top-[4.5rem]",
+          scrolled ? "top-[6.75rem] sm:top-16" : "top-[7.25rem] sm:top-[4.5rem]",
         )}
       >
         <nav aria-label="Mobile Navigation" className="container-page flex min-h-full flex-col pb-10 pt-6">

@@ -1,5 +1,5 @@
 /**
- * ZENTRALE KONFIGURATION – KOHRT STUDIO
+ * ZENTRALE KONFIGURATION – PRODESIGN STUDIO
  *
  * Hinweis zu Überschriften: Text zwischen *Sternchen* wird automatisch
  * als eleganter Akzent (kursive Serifenschrift in Grün) dargestellt.
@@ -13,29 +13,29 @@
  */
 
 export const site = {
-  name: "KOHRT STUDIO",
-  shortName: "kohrt.studio",
-  domain: "kohrt.studio",
-  url: "https://kohrt.studio",
+  name: "PRODESIGN STUDIO",
+  shortName: "Prodesign Studio",
+  domain: "prodesign.studio",
+  url: "https://prodesign.studio",
   claim: "Starke Websites. Faire Preise.",
   description:
-    "Modernes Webdesign für kleine und mittelständische Unternehmen. Individuell gestaltet, professionell umgesetzt und zum transparenten Fixpreis – von Lars-Timon Kohrt.",
+    "Modernes Webdesign für kleine und mittelständische Unternehmen. Individuell gestaltet, professionell umgesetzt und zum transparenten Fixpreis. Erster Designvorschlag kostenlos und unverbindlich.",
   locale: "de_DE",
   language: "de",
 } as const;
 
 export const owner = {
-  name: "Lars-Timon Kohrt",
-  firstName: "Lars-Timon",
+  name: "Alexander Engel",
+  firstName: "Alexander",
   role: "Webdesign & Entwicklung",
   /**
-   * Portraitfoto: Datei unter `public/images/lars-timon-kohrt.jpg` ablegen.
+   * Portraitfoto: Datei unter `public/images/alexander-engel.jpg` ablegen.
    * Solange die Datei fehlt, zeigt die Website automatisch eine
    * gestaltete Platzhalterfläche.
    */
   portrait: {
-    src: "/images/lars-timon-kohrt.jpg",
-    alt: "Portrait von Lars-Timon Kohrt, Gründer von Kohrt Studio",
+    src: "/images/alexander-engel.jpg",
+    alt: "Portrait von Alexander Engel, Gründer von Prodesign Studio",
     width: 1200,
     height: 1500,
   },
@@ -43,12 +43,14 @@ export const owner = {
 
 export const contact = {
   /** Diese Adresse wird auf der Website angezeigt. */
-  displayEmail: "info@kohrt.studio",
+  displayEmail: "info@prodesign.studio",
   /**
-   * An diese Adresse gehen Formular- und Mail-Links (mailto),
-   * bis info@kohrt.studio eingerichtet ist. Danach einfach ersetzen.
+   * An diese Adresse gehen Formular- und Mail-Links (mailto).
+   * Achtung: Diese Adresse ist für Besucher sichtbar (im E-Mail-Programm).
+   * Deshalb hier bewusst keine private Adresse eintragen, sondern
+   * info@prodesign.studio einrichten und ggf. an das eigene Postfach weiterleiten.
    */
-  recipientEmail: "larstimon.kohrt@gmail.com",
+  recipientEmail: "info@prodesign.studio",
   /** Telefonnummer bewusst leer – erst eintragen, wenn vorhanden. */
   phone: "",
   responseNote: "Ich melde mich in der Regel innerhalb von ein bis zwei Werktagen persönlich bei dir.",
@@ -68,7 +70,26 @@ export const legalNavigation = [
 ] as const;
 
 export const cta = {
-  primary: { label: "Projekt anfragen", href: "/kontakt/" },
+  /** Immer sichtbarer Button im Header */
+  primary: {
+    label: "Jetzt kostenlosen Erstentwurf erhalten",
+    shortLabel: "Kostenloser Erstentwurf",
+    href: "/kontakt/#anfrage",
+  },
+} as const;
+
+/* ------------------------------------------------------------------ */
+/* Kostenloser Erstentwurf                                             */
+/* ------------------------------------------------------------------ */
+
+export const freeDraft = {
+  hours: 48,
+  eyebrow: "Kostenlos & unverbindlich",
+  headline: "Dein erster Designvorschlag: *kostenlos in 48 Stunden.*",
+  text: "Beantworte ein paar kurze Fragen – meist reicht ein Klick. Daraus gestalte ich einen ersten Designvorschlag für die Startseite deiner neuen Website. Er kann bereits innerhalb von 48 Stunden bei dir sein. Gefällt er dir, sprechen wir über alles Weitere. Wenn nicht, ist das völlig in Ordnung.",
+  points: ["100 % kostenlos", "Völlig unverbindlich", "Anfrage in ca. 2 Minuten"],
+  footnote: "Nach Eingang deiner vollständigen Anfrage, an Werktagen.",
+  cta: { label: "Jetzt kostenlosen Erstentwurf erhalten", href: "/kontakt/#anfrage" },
 } as const;
 
 /* ------------------------------------------------------------------ */
@@ -76,18 +97,22 @@ export const cta = {
 /* ------------------------------------------------------------------ */
 
 export const hero = {
-  eyebrow: "Webdesign zum fairen Fixpreis",
+  eyebrow: "Kostenloser Erstentwurf in 48 Stunden",
   headline: { lead: "Starke Websites.", accent: "Faire Preise." },
   alternativeHeadline: "Dein Unternehmen verdient eine Website, die begeistert.",
   subline:
     "Modernes Webdesign für Unternehmen, die online überzeugen möchten. Individuell gestaltet, professionell umgesetzt und zum transparenten Fixpreis.",
-  primaryCta: { label: "Website anfragen", href: "/kontakt/" },
+  primaryCta: { label: "Kostenlosen Erstentwurf erhalten", href: "/kontakt/#anfrage" },
   secondaryCta: { label: "Designbeispiele entdecken", href: "/#designstudien" },
-  facts: ["Fixpreis ab 1.490 € netto", "Persönlicher Ansprechpartner", "Für alle Bildschirmgrößen"],
+  facts: [
+    "Erster Designvorschlag kostenlos & unverbindlich",
+    "Websites ab 790 € netto zum Fixpreis",
+    "SEO-Grundoptimierung inklusive",
+  ],
 } as const;
 
 export const benefits = {
-  eyebrow: "Warum Kohrt Studio",
+  eyebrow: "Warum Prodesign Studio",
   headline: "Gutes Webdesign muss *nicht kompliziert* sein.",
   intro:
     "Eine professionelle Website ist für viele Unternehmen das wichtigste Aushängeschild. Ich sorge dafür, dass der Weg dorthin klar, angenehm und bezahlbar bleibt.",
@@ -123,7 +148,7 @@ export const pricing = {
     name: "Website-Erstellung",
     tagline: "Deine professionelle Firmenwebsite – individuell gestaltet.",
     priceFrom: true,
-    price: 1490,
+    price: 790,
     period: "einmalig",
     taxNote: "netto, zzgl. gesetzlicher USt.",
     badge: "Einstiegspreis",
@@ -134,17 +159,18 @@ export const pricing = {
       "Bis zu fünf Unterseiten",
       "Optimiert für Smartphone, Tablet und Desktop",
       "Kontaktmöglichkeiten",
-      "Grundlegende Suchmaschinenoptimierung",
+      "SEO-Grundoptimierung (technisch & lokal)",
       "Schnelle Ladezeiten",
       "Einbindung vorhandener Bilder und Texte",
       "Unterstützung bei der Veröffentlichung",
     ],
-    cta: { label: "Unverbindlich anfragen", href: "/kontakt/?leistung=neue-website" },
+    cta: { label: "Kostenlosen Erstentwurf erhalten", href: "/kontakt/?leistung=neue-website#anfrage" },
   },
   care: {
     name: "Website-Care",
     tagline: "Optionales Betreuungspaket für Inhalte, Technik und Sicherheit.",
-    price: 79,
+    priceFrom: true,
+    price: 29,
     period: "pro Monat",
     taxNote: "netto, zzgl. gesetzlicher USt.",
     badge: "Optional",
@@ -160,7 +186,8 @@ export const pricing = {
     note: "Keine laufende Betreuung gewünscht? Auch kein Problem. Du kannst deine Website selbstverständlich unabhängig betreiben.",
     fairUse:
       "Der Support umfasst technische Fragen und kleine Hilfestellungen. Umfangreichere Änderungen oder neue Funktionen bespreche ich vorab transparent mit dir.",
-    cta: { label: "Betreuung anfragen", href: "/kontakt/?leistung=sonstiges" },
+    cta: { label: "Betreuung anfragen", href: "/kontakt/?leistung=sonstiges#anfrage" },
+    scopeNote: "Einstiegspreis für die Basis-Betreuung. Der genaue Umfang richtet sich nach deiner Website und wird vorab transparent vereinbart.",
   },
   additionalCosts: {
     title: "Gut zu wissen",
@@ -189,6 +216,12 @@ export const services = [
     points: ["Klarer Fokus auf ein Ziel", "Überzeugender Aufbau", "Ideal für Aktionen & Kampagnen"],
   },
   {
+    key: "seo",
+    title: "SEO-Optimierung",
+    text: "Damit dich deine Kunden finden: Jede Website ist technisch für Suchmaschinen optimiert. Auf Wunsch gehe ich mit erweiterter SEO noch einen Schritt weiter.",
+    points: ["SEO-Grundoptimierung inklusive", "Lokale Sichtbarkeit in deiner Region", "Erweiterte SEO auf Anfrage"],
+  },
+  {
     key: "betreuung",
     title: "Betreuung & Pflege",
     text: "Mit dem optionalen Website-Care-Paket bleibt deine Website technisch aktuell – und du pflegst Inhalte ganz einfach selbst.",
@@ -196,15 +229,72 @@ export const services = [
   },
 ] as const;
 
+/* ------------------------------------------------------------------ */
+/* SEO                                                                 */
+/* ------------------------------------------------------------------ */
+
+export const seo = {
+  eyebrow: "SEO-Optimierung",
+  headline: "Gut aussehen ist schön. *Gefunden werden* ist besser.",
+  intro:
+    "Die schönste Website bringt wenig, wenn niemand sie findet. Deshalb ist eine solide Suchmaschinenoptimierung bei jeder Website von Anfang an inklusive – technisch sauber und auf deine Region ausgerichtet.",
+  items: [
+    {
+      key: "technik",
+      title: "Technische SEO",
+      text: "Sauberer Code, eine klare Seitenstruktur und eine logische Überschriften-Hierarchie, die Suchmaschinen verstehen.",
+    },
+    {
+      key: "speed",
+      title: "Schnelle Ladezeiten",
+      text: "Optimierte Bilder und schlanke Technik – gut für deine Besucher und für die Bewertung durch Google (Core Web Vitals).",
+    },
+    {
+      key: "mobile",
+      title: "Mobile First",
+      text: "Google bewertet zuerst die Smartphone-Version einer Website. Deine Website ist genau dafür optimiert.",
+    },
+    {
+      key: "lokal",
+      title: "Lokale Sichtbarkeit",
+      text: "Ortsbezug in Seitentiteln und Inhalten, damit dich Kunden aus deiner Region finden – auf Wunsch mit Tipps zum Google-Unternehmensprofil.",
+    },
+    {
+      key: "meta",
+      title: "Seitentitel & Beschreibungen",
+      text: "Individuelle Meta-Daten für jede Seite, damit dein Eintrag in den Suchergebnissen zum Klicken einlädt.",
+    },
+    {
+      key: "schema",
+      title: "Strukturierte Daten",
+      text: "Zusätzliche Informationen für Suchmaschinen, zum Beispiel zu Unternehmen, Adresse und Öffnungszeiten.",
+    },
+  ],
+  honesty:
+    "Ehrlich gesagt: Platz 1 bei Google kann niemand seriös garantieren. Was du bekommst, ist eine Website, die technisch alle Voraussetzungen für gute Platzierungen mitbringt.",
+  extra:
+    "Du möchtest mehr? Erweiterte SEO – etwa Keyword-Recherche, suchmaschinenoptimierte Texte oder eigene Seiten für einzelne Leistungen und Orte – biete ich dir individuell an.",
+  /** Beispiel-Suchergebnis in der Grafik (fiktiv) */
+  example: {
+    query: "zimmerei musterstadt",
+    url: "muster-holzbau.de › leistungen",
+    title: "Zimmerei & Holzbau in Musterstadt | Muster Holzbau",
+    description: "Dachstühle, Holzrahmenbau und Sanierung aus einer Hand. Kostenlose Erstberatung vor Ort – jetzt unverbindlich anfragen.",
+  },
+} as const;
+
 export const extras = {
   headline: "Mehr als das Einstiegspaket?",
   text: "Jedes Unternehmen ist anders. Wenn du mehr brauchst, erstelle ich dir ein individuelles Angebot – mit klar beschriebenen Leistungen und festem Preis.",
   items: [
     "Weitere Unterseiten",
     "Mehrsprachige Websites",
+    "Erweiterte SEO & Keyword-Recherche",
+    "Suchmaschinenoptimierte Texte",
     "Unterstützung bei Texten",
     "Bildbearbeitung & Bildauswahl",
     "Einbindung externer Dienste",
+    "Online-Terminbuchung",
     "Individuelle Funktionen",
   ],
 } as const;
@@ -220,13 +310,13 @@ export const workflow = {
   steps: [
     {
       number: "01",
-      title: "Kennenlernen",
-      text: "Wir sprechen über dein Unternehmen, deine Wünsche und deine Vorstellungen.",
+      title: "Kostenloser Erstentwurf",
+      text: "Du klickst dich durch ein paar kurze Fragen – und erhältst einen ersten Designvorschlag, oft schon nach 48 Stunden.",
     },
     {
       number: "02",
-      title: "Konzept & Design",
-      text: "Ich entwickle einen individuellen Website-Entwurf, passend zu deinem Unternehmen.",
+      title: "Kennenlernen & Konzept",
+      text: "Wir besprechen den Entwurf, deine Wünsche und den Umfang. Du erhältst ein klares Angebot zum Fixpreis.",
     },
     {
       number: "03",
@@ -247,15 +337,15 @@ export const workflow = {
 
 export const about = {
   eyebrow: "Über mich",
-  headline: "Hi, ich bin *Lars-Timon.*",
-  lead: "Ich bin Lars-Timon Kohrt und der Kopf hinter kohrt.studio.",
+  headline: "Hi, ich bin *Alexander.*",
+  lead: "Ich bin Alexander Engel und der Kopf hinter Prodesign Studio.",
   paragraphs: [
     "Ich bin überzeugt: Ein professioneller Internetauftritt muss weder kompliziert noch unbezahlbar sein.",
     "Mit modernen Technologien, einem Gespür für gutes Design und effizienten Abläufen entwickle ich Websites, die Unternehmen überzeugend präsentieren – ohne unnötige Kosten und ohne komplizierte Prozesse.",
     "Besonders wichtig ist mir dabei eine persönliche, unkomplizierte Zusammenarbeit. Bei mir gibt es keine langen Abstimmungswege und keine wechselnden Ansprechpartner, sondern direkten Kontakt und klare Vereinbarungen.",
   ],
   closing: "Mein Ziel ist einfach: eine Website, auf die du stolz sein kannst – zu einem Preis, der fair bleibt.",
-  cta: { label: "Lass uns sprechen", href: "/kontakt/" },
+  cta: { label: "Lass uns sprechen", href: "/kontakt/#anfrage" },
   values: [
     { title: "Ein Ansprechpartner", text: "Du sprichst von der ersten Idee bis zum Livegang direkt mit mir." },
     { title: "Klare Vereinbarungen", text: "Leistungen, Preis und nächste Schritte sind vorab verständlich festgehalten." },
@@ -269,19 +359,13 @@ export const about = {
 /* ------------------------------------------------------------------ */
 
 export const contactSection = {
-  eyebrow: "Kontakt",
+  eyebrow: "Kostenloser Erstentwurf",
   headline: "Bereit für einen *neuen Webauftritt?*",
-  text: "Erzähl mir von deinem Unternehmen und deinen Vorstellungen. Gemeinsam finden wir eine Lösung, die zu dir und deinem Budget passt.",
-  serviceOptions: [
-    { value: "neue-website", label: "Neue Firmenwebsite" },
-    { value: "modernisierung", label: "Bestehende Website modernisieren" },
-    { value: "landingpage", label: "Landingpage" },
-    { value: "sonstiges", label: "Sonstiges" },
-  ],
+  text: "Klick dich in rund zwei Minuten durch ein paar Fragen zu deinem Unternehmen. Daraus gestalte ich deinen ersten Designvorschlag – kostenlos und unverbindlich.",
   nextSteps: [
-    "Du schickst mir deine Anfrage – unverbindlich und kostenlos.",
-    "Ich melde mich persönlich und wir besprechen deine Wünsche.",
-    "Du erhältst ein klares Angebot mit festem Preis.",
+    "Du beantwortest ein paar kurze Fragen – fast nur Klicks, kaum Tippen.",
+    "Ich gestalte deinen ersten Designvorschlag. Er kann schon nach 48 Stunden bei dir sein.",
+    "Gefällt er dir, erhältst du ein klares Angebot zum Fixpreis. Wenn nicht, ist das völlig in Ordnung.",
   ],
 } as const;
 
@@ -295,7 +379,15 @@ export const faq = {
   items: [
     {
       q: "Was kostet eine professionelle Firmenwebsite?",
-      a: "Eine individuell gestaltete Website mit bis zu fünf Unterseiten gibt es bei mir ab 1.490 € netto als einmaligen Fixpreis. Brauchst du mehr Seiten oder besondere Funktionen, erhältst du vorab ein transparentes Angebot – ohne versteckte Kosten.",
+      a: "Eine individuell gestaltete Website mit bis zu fünf Unterseiten gibt es bei mir ab 790 € netto als einmaligen Fixpreis. Brauchst du mehr Seiten oder besondere Funktionen, erhältst du vorab ein transparentes Angebot – ohne versteckte Kosten.",
+    },
+    {
+      q: "Ist der erste Designvorschlag wirklich kostenlos?",
+      a: "Ja. Du beantwortest ein paar kurze Fragen, und ich gestalte daraus einen ersten Designvorschlag für deine Startseite – kostenlos und völlig unverbindlich. Er kann bereits innerhalb von 48 Stunden bei dir sein. Erst wenn er dir gefällt, sprechen wir über ein Angebot.",
+    },
+    {
+      q: "Wird meine Website bei Google gefunden?",
+      a: "Jede Website erhält eine SEO-Grundoptimierung: saubere Technik, schnelle Ladezeiten, passende Seitentitel und Beschreibungen sowie einen klaren regionalen Bezug. Eine bestimmte Platzierung kann niemand seriös garantieren – aber deine Website bringt alle technischen Voraussetzungen mit. Erweiterte SEO biete ich dir auf Wunsch individuell an.",
     },
     {
       q: "Wie lange dauert die Erstellung?",
@@ -432,4 +524,96 @@ export const studies: Study[] = [
 export const legal = {
   placeholderNotice:
     "Diese Seite ist ein Platzhalter. Vor der Veröffentlichung der Website müssen hier die vollständigen und rechtlich geprüften Pflichtangaben ergänzt werden.",
+} as const;
+
+/* ------------------------------------------------------------------ */
+/* Anfrage-Assistent (mehrstufiges Formular)                           */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Antwortmöglichkeiten des Anfrage-Assistenten. Die Antworten werden
+ * beim Absenden zu einem strukturierten Briefing zusammengefasst, aus dem
+ * sich direkt ein erster (KI-gestützter) Designentwurf erstellen lässt.
+ */
+export const inquiry = {
+  title: "Dein kostenloser Erstentwurf",
+  duration: "ca. 2 Minuten",
+  projectTypes: [
+    { value: "neue-website", label: "Neue Website", hint: "Ich habe noch keine oder starte neu" },
+    { value: "modernisierung", label: "Website modernisieren", hint: "Meine Website ist in die Jahre gekommen" },
+    { value: "landingpage", label: "Landingpage", hint: "Eine Seite für ein Angebot oder eine Aktion" },
+    { value: "sonstiges", label: "Etwas anderes", hint: "Betreuung, SEO oder eine andere Idee" },
+  ],
+  industries: [
+    { value: "handwerk", label: "Handwerk & Bau" },
+    { value: "garten", label: "Garten & Landschaft" },
+    { value: "beauty", label: "Kosmetik & Beauty" },
+    { value: "friseur", label: "Friseursalon" },
+    { value: "gastronomie", label: "Restaurant & Café" },
+    { value: "gesundheit", label: "Gesundheit & Praxis" },
+    { value: "handel", label: "Fachgeschäft & Handel" },
+    { value: "dienstleistung", label: "Dienstleistung & Beratung" },
+    { value: "andere", label: "Andere Branche" },
+  ],
+  goals: [
+    { value: "anfragen", label: "Mehr Anfragen & Aufträge" },
+    { value: "termine", label: "Online-Terminbuchungen" },
+    { value: "image", label: "Professioneller Auftritt" },
+    { value: "google", label: "Bei Google gefunden werden" },
+    { value: "angebot", label: "Leistungen & Produkte zeigen" },
+    { value: "personal", label: "Mitarbeiter gewinnen" },
+  ],
+  styles: [
+    { value: "minimal", label: "Modern & minimalistisch", font: "sans", colors: ["#FFFFFF", "#1F2421", "#9AA59F"] },
+    { value: "elegant", label: "Elegant & hochwertig", font: "serif", colors: ["#F3EFE6", "#1F3A2E", "#C8B28A"] },
+    { value: "warm", label: "Warm & persönlich", font: "rounded", colors: ["#F6EEE6", "#5A3E35", "#D9A38B"] },
+    { value: "kraftvoll", label: "Kraftvoll & bodenständig", font: "bold", colors: ["#1E2124", "#FAFAF8", "#B8693D"] },
+    { value: "frisch", label: "Frisch & lebendig", font: "sans", colors: ["#F4FBF8", "#16483F", "#F2B84B"] },
+  ],
+  palettes: [
+    { value: "gruen", label: "Natürliche Grüntöne", colors: ["#34483D", "#A9BBAA", "#F3EFE6"] },
+    { value: "erdtoene", label: "Warme Erdtöne", colors: ["#8A5A3C", "#D9B5A8", "#F4ECE4"] },
+    { value: "dunkel", label: "Dunkel & edel", colors: ["#1E2124", "#B8693D", "#FAFAF8"] },
+    { value: "blau", label: "Klares Blau", colors: ["#1F3A5F", "#8FB3D9", "#F5F8FB"] },
+    { value: "firmenfarben", label: "Meine Firmenfarben", colors: [] },
+    { value: "offen", label: "Lass dich inspirieren", colors: [] },
+  ],
+  sections: [
+    { value: "leistungen", label: "Leistungen" },
+    { value: "ueber-uns", label: "Über uns" },
+    { value: "team", label: "Team" },
+    { value: "galerie", label: "Referenzen & Galerie" },
+    { value: "preise", label: "Preise" },
+    { value: "oeffnungszeiten", label: "Öffnungszeiten & Anfahrt" },
+    { value: "termine", label: "Online-Terminbuchung" },
+    { value: "news", label: "News & Blog" },
+    { value: "faq", label: "Häufige Fragen" },
+    { value: "karriere", label: "Karriere & Jobs" },
+    { value: "kontakt", label: "Kontaktformular" },
+  ],
+  defaultSections: ["leistungen", "ueber-uns", "kontakt"],
+  materials: [
+    { value: "logo", label: "Logo" },
+    { value: "fotos", label: "Eigene Fotos" },
+    { value: "texte", label: "Texte" },
+    { value: "website", label: "Bestehende Website" },
+  ],
+  timelines: [
+    { value: "asap", label: "So schnell wie möglich" },
+    { value: "1-2-monate", label: "In 1–2 Monaten" },
+    { value: "offen", label: "Flexibel / noch offen" },
+  ],
+  budgets: [
+    { value: "bis-1000", label: "bis 1.000 €" },
+    { value: "1000-2000", label: "1.000 – 2.000 €" },
+    { value: "ueber-2000", label: "über 2.000 €" },
+    { value: "unklar", label: "Noch unklar" },
+  ],
+  care: [
+    { value: "ja", label: "Ja, gern" },
+    { value: "vielleicht", label: "Vielleicht" },
+    { value: "nein", label: "Nein, danke" },
+  ],
+  privacyNote:
+    "Beim Absenden öffnet sich dein E-Mail-Programm mit deiner vorbereiteten Anfrage. Auf dieser Website werden keine Daten gespeichert.",
 } as const;

@@ -3,9 +3,9 @@ import { Contact } from "@/components/sections/Contact";
 import { Faq } from "@/components/sections/Faq";
 
 export const metadata: Metadata = {
-  title: "Kontakt",
+  title: "Kostenloser Erstentwurf & Kontakt",
   description:
-    "Erzähl mir von deinem Unternehmen und deinen Vorstellungen. Unverbindliche Anfrage für deine neue Website zum fairen Fixpreis.",
+    "In rund zwei Minuten zum kostenlosen Erstentwurf deiner neuen Website – unverbindlich und oft schon nach 48 Stunden bei dir.",
   alternates: { canonical: "/kontakt/" },
 };
 

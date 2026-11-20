@@ -40,8 +40,8 @@ export function Footer() {
                 <MailLink className="text-ink underline decoration-sage decoration-2 underline-offset-4 transition-colors hover:text-forest" />
               </li>
               <li>
-                <Link href="/kontakt/" className="text-ink transition-colors hover:text-forest">
-                  Projekt anfragen
+                <Link href="/kontakt/#anfrage" className="text-ink transition-colors hover:text-forest">
+                  Kostenloser Erstentwurf
                 </Link>
               </li>
             </ul>

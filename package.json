@@ -1,8 +1,8 @@
 {
-  "name": "kohrt-studio",
+  "name": "prodesign-studio",
   "version": "1.0.0",
   "private": true,
-  "description": "Website von KOHRT STUDIO – Starke Websites. Faire Preise.",
+  "description": "Website von PRODESIGN STUDIO – Starke Websites. Faire Preise.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
