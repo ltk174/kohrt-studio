@@ -76,24 +76,28 @@ Anschließend die Domain `prodesign.studio` in den Projekteinstellungen verbinde
 
 **Gewöhnliches Webhosting:** `npm run build` ausführen und den Inhalt des Ordners `out/` per FTP hochladen.
 
-## Anfrage-Formular einrichten (Web3Forms)
+## Anfrage-Formular einrichten
 
-Die Website hat keinen eigenen Server. Das Formular sendet die Antworten an den Formular-Dienst
-[Web3Forms](https://web3forms.com) (kostenlos bis 250 Anfragen/Monat), der sie per E-Mail weiterleitet.
+Die Website hat keinen eigenen Server. Das Formular sendet die Antworten direkt an einen kostenlosen
+Formular-Dienst, der sie per E-Mail zustellt – beim Kunden öffnet sich kein E-Mail-Programm.
 
-1. Auf [web3forms.com](https://web3forms.com) die Empfänger-E-Mail-Adresse eingeben und „Create Access Key“ klicken.
-2. Den Access Key aus der E-Mail kopieren.
-3. **Entweder** in Vercel unter *Settings → Environment Variables* als `NEXT_PUBLIC_WEB3FORMS_KEY` anlegen und neu deployen,
-   **oder** in `src/config/site.ts` bei `formDelivery.accessKey` eintragen.
+**Standard: [FormSubmit.co](https://formsubmit.co)** (kein Konto, kein Schlüssel), Ziel: `formDelivery.formsubmitTarget` in `site.ts`.
 
-Der Access Key verrät die E-Mail-Adresse nicht und darf öffentlich sein. Ein unsichtbares Spam-Schutzfeld ist eingebaut.
-Web3Forms in der Datenschutzerklärung erwähnen.
+1. Postfach `info@prodesign.studio` einrichten (z. B. bei IONOS). Die Domain braucht dafür MX-Einträge.
+2. Einmal selbst eine Anfrage über die Website absenden. FormSubmit schickt eine Mail „Activate Form“ an das Postfach → Link klicken.
+3. Ab jetzt kommen alle Anfragen an. Optional den zufälligen Alias aus der Bestätigungsmail bei `formsubmitTarget` eintragen –
+   dann steht die Adresse nirgends mehr im Code.
+
+**Alternative: [Web3Forms](https://web3forms.com)** – Access Key als `NEXT_PUBLIC_WEB3FORMS_KEY` (Vercel) oder bei
+`formDelivery.web3formsKey` eintragen. Ist ein Key gesetzt, wird automatisch Web3Forms verwendet.
+
+Den genutzten Dienst in der Datenschutzerklärung erwähnen.
 
 ## Technik & Datenschutz
 
 - Schriften (Manrope, Inter, Instrument Serif; in den Studien Cormorant Garamond, Archivo, Bodoni Moda, Jost) werden **lokal** ausgeliefert – keine Verbindung zu Google Fonts.
 - Keine Tracking-Tools, keine Cookies, keine externen Skripte.
-- Anfrage-Assistent: 7 kurze Schritte, fast nur Klicks. Beim Klick auf „Erstentwurf anfordern“ wird die Anfrage direkt über **Web3Forms** per E-Mail zugestellt – ohne E-Mail-Programm, die Empfängeradresse ist nirgends sichtbar. Die E-Mail enthält eine strukturierte Übersicht und ein **KI-Briefing**, das direkt in ein KI-Werkzeug kopiert werden kann.
+- Anfrage-Assistent: 7 kurze Schritte, fast nur Klicks. Beim Klick auf „Erstentwurf anfordern“ wird die Anfrage direkt über einen Formular-Dienst (FormSubmit bzw. Web3Forms) per E-Mail zugestellt – ohne E-Mail-Programm, die Empfängeradresse ist nirgends sichtbar. Die E-Mail enthält eine strukturierte Übersicht und ein **KI-Briefing**, das direkt in ein KI-Werkzeug kopiert werden kann.
 - Animationen respektieren `prefers-reduced-motion`.
 - SEO: Metadaten pro Seite, Open Graph, `sitemap.xml`, `robots.txt`, strukturierte Daten (schema.org).
 
@@ -102,7 +106,7 @@ Web3Forms in der Datenschutzerklärung erwähnen.
 - [ ] Impressum und Datenschutzerklärung mit rechtlich geprüften Angaben füllen
 - [ ] Portraitfoto ablegen
 - [ ] Domain `prodesign.studio` registrieren und mit Vercel verbinden
-- [ ] Web3Forms-Access-Key einrichten (siehe unten) – vorher kommen keine Anfragen an!
+- [ ] Postfach `info@prodesign.studio` einrichten und Formular einmalig aktivieren (siehe „Anfrage-Formular einrichten“)
 - [ ] Kundenstimmen (`reviews`) durch echte, freigegebene Zitate ersetzen, dann `reviews.placeholder` auf `false`
 - [ ] Erfolgsgeschichten (`successStories`) mit echten Zahlen (z. B. Google Search Console) füllen, dann `successStories.placeholder` auf `false`
 - [ ] Inhalte und Preise final prüfen

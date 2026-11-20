@@ -193,6 +193,62 @@ function validate(id: StepId, a: Answers): Partial<Record<keyof Answers, string>
   return errors;
 }
 
+/* ------------------------------------------------------------------ */
+/* Versand (FormSubmit bzw. Web3Forms)                                 */
+/* ------------------------------------------------------------------ */
+
+type Submission = { subject: string; name: string; email: string; company: string; message: string; honeypot: boolean };
+
+/** Sendet die Anfrage an den Formular-Dienst. Wirft bei Fehlern. */
+async function deliver(data: Submission) {
+  const web3formsKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || formDelivery.web3formsKey;
+  const headers = { "Content-Type": "application/json", Accept: "application/json" };
+
+  if (web3formsKey) {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        access_key: web3formsKey,
+        subject: data.subject,
+        from_name: formDelivery.fromName,
+        name: data.name,
+        email: data.email,
+        unternehmen: data.company,
+        message: data.message,
+        botcheck: data.honeypot,
+      }),
+    });
+    const result = (await response.json().catch(() => null)) as { success?: boolean } | null;
+    if (!response.ok || !result?.success) throw new Error("Versand fehlgeschlagen");
+    return;
+  }
+
+  if (data.honeypot) return; // Spam-Roboter: still „erfolgreich“, aber nichts senden
+  const response = await fetch(`https://formsubmit.co/ajax/${formDelivery.formsubmitTarget}`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({
+      _subject: data.subject,
+      _template: "box",
+      _captcha: "false",
+      Name: data.name,
+      email: data.email,
+      Unternehmen: data.company,
+      Anfrage: data.message,
+    }),
+  });
+  const result = (await response.json().catch(() => null)) as { success?: string | boolean; message?: string } | null;
+  const ok = result?.success === true || result?.success === "true";
+  if (!response.ok || !ok) {
+    if (result?.message && /activat/i.test(result.message)) {
+      // Hinweis für den Website-Betreiber: Formular muss einmalig per E-Mail aktiviert werden
+      console.warn("FormSubmit: Formular noch nicht aktiviert –", result.message);
+    }
+    throw new Error("Versand fehlgeschlagen");
+  }
+}
+
 const noopSubscribe = () => () => {};
 
 /* ------------------------------------------------------------------ */
@@ -202,7 +258,7 @@ const noopSubscribe = () => () => {};
 /**
  * Mehrstufiger Anfrage-Assistent für den kostenlosen Erstentwurf.
  * Fast nur Klicks, kaum Tippen. Beim Absenden wird die Anfrage samt
- * strukturiertem KI-Briefing direkt über Web3Forms per E-Mail zugestellt –
+ * strukturiertem KI-Briefing direkt über einen Formular-Dienst per E-Mail zugestellt –
  * ohne E-Mail-Programm und ohne dass die Empfängeradresse sichtbar ist.
  */
 export function InquiryWizard({ className }: { className?: string }) {
@@ -301,31 +357,18 @@ export function InquiryWizard({ className }: { className?: string }) {
       return;
     }
     if (sending) return;
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || formDelivery.accessKey;
-    if (!accessKey) {
-      setSendError("Das Formular ist noch nicht vollständig eingerichtet. Bitte versuche es später noch einmal.");
-      return;
-    }
     const { subject, body } = buildBriefing(values);
     setSending(true);
     setSendError("");
     try {
-      const response = await fetch(formDelivery.endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: accessKey,
-          subject,
-          from_name: formDelivery.fromName,
-          name: values.name.trim(),
-          email: values.email.trim(),
-          unternehmen: values.company.trim(),
-          message: body,
-          botcheck: honeypotRef.current?.checked ?? false,
-        }),
+      await deliver({
+        subject,
+        name: values.name.trim(),
+        email: values.email.trim(),
+        company: values.company.trim(),
+        message: body,
+        honeypot: honeypotRef.current?.checked ?? false,
       });
-      const result = (await response.json().catch(() => null)) as { success?: boolean } | null;
-      if (!response.ok || !result?.success) throw new Error("Versand fehlgeschlagen");
       hasNavigated.current = true;
       setSent(true);
     } catch {

@@ -50,20 +50,26 @@ export const contact = {
 } as const;
 
 /**
- * Versand des Anfrage-Formulars über Web3Forms (https://web3forms.com).
- * Die Website bleibt statisch – Web3Forms leitet die Anfrage per E-Mail weiter.
- * Die Empfängeradresse ist NUR bei Web3Forms hinterlegt und erscheint weder
- * auf der Website noch im Quellcode.
+ * VERSAND DES ANFRAGE-FORMULARS
+ * Die Website ist statisch (kein eigener Server). Anfragen werden daher über
+ * einen kostenlosen Formular-Dienst per E-Mail zugestellt – direkt aus dem
+ * Formular, ohne dass sich beim Kunden ein E-Mail-Programm öffnet.
  *
- * Einrichtung (einmalig, ca. 1 Minute):
- * 1. Auf web3forms.com die Empfängeradresse eingeben → Access Key kommt per E-Mail.
- * 2. Key hier bei `accessKey` eintragen ODER in Vercel als Umgebungsvariable
- *    `NEXT_PUBLIC_WEB3FORMS_KEY` hinterlegen (danach neu deployen).
- * Der Access Key ist öffentlich unbedenklich – er verrät die E-Mail-Adresse nicht.
+ * Standard: FormSubmit.co (kein Konto, kein Schlüssel nötig)
+ * 1. Postfach für `formsubmitTarget` einrichten (Domain braucht MX-Einträge).
+ * 2. Erste Anfrage absenden → FormSubmit schickt einmalig eine Mail
+ *    „Activate Form“ an diese Adresse → Link anklicken. Fertig.
+ * 3. Optional: In der Bestätigungsmail steht ein zufälliger Alias
+ *    (z. B. „a1b2c3…“). Diesen statt der Adresse bei `formsubmitTarget`
+ *    eintragen – dann steht die Adresse nirgends mehr im Code.
+ *
+ * Alternative: Web3Forms – Access Key bei `web3formsKey` oder als
+ * Umgebungsvariable `NEXT_PUBLIC_WEB3FORMS_KEY` eintragen. Ist ein Key
+ * vorhanden, wird automatisch Web3Forms verwendet.
  */
 export const formDelivery = {
-  endpoint: "https://api.web3forms.com/submit",
-  accessKey: "",
+  formsubmitTarget: "info@prodesign.studio",
+  web3formsKey: "",
   fromName: "prodesign.studio – Anfrage-Assistent",
 } as const;
 
