@@ -14,7 +14,7 @@
 
 export const site = {
   name: "PRODESIGN STUDIO",
-  shortName: "Prodesign Studio",
+  shortName: "prodesign.studio",
   domain: "prodesign.studio",
   url: "https://prodesign.studio",
   claim: "Starke Websites. Faire Preise.",
@@ -35,9 +35,9 @@ export const owner = {
    */
   portrait: {
     src: "/images/alexander-engel.jpg",
-    alt: "Portrait von Alexander Engel, Gründer von Prodesign Studio",
-    width: 1200,
-    height: 1500,
+    alt: "Portrait von Alexander Engel, Gründer von prodesign.studio",
+    width: 878,
+    height: 1086,
   },
 } as const;
 
@@ -123,7 +123,7 @@ export const hero = {
 } as const;
 
 export const benefits = {
-  eyebrow: "Warum Prodesign Studio",
+  eyebrow: "Warum prodesign.studio",
   headline: "Gutes Webdesign muss *nicht kompliziert* sein.",
   intro:
     "Eine professionelle Website ist für viele Unternehmen das wichtigste Aushängeschild. Ich sorge dafür, dass der Weg dorthin klar, angenehm und bezahlbar bleibt.",
@@ -349,7 +349,7 @@ export const workflow = {
 export const about = {
   eyebrow: "Über mich",
   headline: "Hi, ich bin *Alexander.*",
-  lead: "Ich bin Alexander Engel und der Kopf hinter Prodesign Studio.",
+  lead: "Ich bin Alexander Engel und der Kopf hinter prodesign.studio.",
   paragraphs: [
     "Ich bin überzeugt: Ein professioneller Internetauftritt muss weder kompliziert noch unbezahlbar sein.",
     "Mit modernen Technologien, einem Gespür für gutes Design und effizienten Abläufen entwickle ich Websites, die Unternehmen überzeugend präsentieren – ohne unnötige Kosten und ohne komplizierte Prozesse.",
