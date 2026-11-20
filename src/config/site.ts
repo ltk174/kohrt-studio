@@ -59,16 +59,16 @@ export const contact = {
  * 1. Postfach für `formsubmitTarget` einrichten (Domain braucht MX-Einträge).
  * 2. Erste Anfrage absenden → FormSubmit schickt einmalig eine Mail
  *    „Activate Form“ an diese Adresse → Link anklicken. Fertig.
- * 3. Optional: In der Bestätigungsmail steht ein zufälliger Alias
- *    (z. B. „a1b2c3…“). Diesen statt der Adresse bei `formsubmitTarget`
- *    eintragen – dann steht die Adresse nirgends mehr im Code.
+ * 3. Der zufällige Alias aus der Bestätigungsmail ist bei `formsubmitTarget`
+ *    eingetragen (aktiviert, Ziel: info@prodesign.studio) – die E-Mail-Adresse
+ *    steht damit nirgends im Code.
  *
  * Alternative: Web3Forms – Access Key bei `web3formsKey` oder als
  * Umgebungsvariable `NEXT_PUBLIC_WEB3FORMS_KEY` eintragen. Ist ein Key
  * vorhanden, wird automatisch Web3Forms verwendet.
  */
 export const formDelivery = {
-  formsubmitTarget: "info@prodesign.studio",
+  formsubmitTarget: "cee8d3d23430e4ae52f0247a963151c8",
   web3formsKey: "",
   fromName: "prodesign.studio – Anfrage-Assistent",
 } as const;
