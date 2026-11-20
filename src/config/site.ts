@@ -117,8 +117,8 @@ export const hero = {
   secondaryCta: { label: "Designbeispiele entdecken", href: "/#designstudien" },
   facts: [
     "Erster Designvorschlag kostenlos & unverbindlich",
+    "Über 250 Webprojekte aus mehr als 10 Jahren",
     "Websites ab 790 € netto zum Fixpreis",
-    "SEO-Grundoptimierung inklusive",
   ],
 } as const;
 
@@ -351,6 +351,7 @@ export const about = {
   headline: "Hi, ich bin *Alexander.*",
   lead: "Ich bin Alexander Engel und der Kopf hinter prodesign.studio.",
   paragraphs: [
+    "Seit über zehn Jahren gestalte ich Websites für Unternehmen – mehr als 250 Projekte sind dabei entstanden, vom Handwerksbetrieb bis zum Kosmetikstudio.",
     "Ich bin überzeugt: Ein professioneller Internetauftritt muss weder kompliziert noch unbezahlbar sein.",
     "Mit modernen Technologien, einem Gespür für gutes Design und effizienten Abläufen entwickle ich Websites, die Unternehmen überzeugend präsentieren – ohne unnötige Kosten und ohne komplizierte Prozesse.",
     "Besonders wichtig ist mir dabei eine persönliche, unkomplizierte Zusammenarbeit. Bei mir gibt es keine langen Abstimmungswege und keine wechselnden Ansprechpartner, sondern direkten Kontakt und klare Vereinbarungen.",
@@ -627,4 +628,126 @@ export const inquiry = {
   ],
   privacyNote:
     "Deine Angaben werden verschlüsselt übermittelt und ausschließlich zur Bearbeitung deiner Anfrage verwendet. Mehr dazu in der Datenschutzerklärung.",
+} as const;
+
+/* ------------------------------------------------------------------ */
+/* Vertrauen: Kennzahlen, Kundenstimmen, Erfolgsgeschichten            */
+/* ------------------------------------------------------------------ */
+
+export const proof = {
+  eyebrow: "Erfahrung",
+  stats: [
+    { value: "250", suffix: "+", label: "erfolgreich umgesetzte Webprojekte" },
+    { value: "10", suffix: "+", label: "Jahre Erfahrung im Webdesign" },
+    { value: "48", suffix: " h", label: "bis zu deinem kostenlosen Erstentwurf" },
+    { value: "1", suffix: "", label: "fester Ansprechpartner – von Anfang bis Ende" },
+  ],
+} as const;
+
+/**
+ * KUNDENSTIMMEN
+ * Wichtig (UWG): Veröffentliche nur echte Rückmeldungen, möglichst wörtlich und
+ * mit Einverständnis der Kunden. `sourceNote` muss beschreiben, woher die
+ * Bewertungen stammen und ob/wie sie geprüft wurden.
+ *
+ * `placeholder: true` zeigt an jedem Eintrag eine sichtbare Markierung
+ * „Platzhalter“. Erst nach dem Ersetzen durch echte Zitate auf `false` setzen.
+ */
+export const reviews = {
+  placeholder: true,
+  eyebrow: "Kundenstimmen",
+  headline: "Was Kunden über die *Zusammenarbeit* sagen.",
+  intro: "Ein Auszug aus den Rückmeldungen, die ich in den letzten Jahren nach Projektabschluss erhalten habe.",
+  sourceNote:
+    "Auszüge aus Kundenrückmeldungen per E-Mail, veröffentlicht mit Zustimmung der Kunden. Es handelt sich nicht um Bewertungen einer Bewertungsplattform.",
+  items: [
+    {
+      rating: 5,
+      quote: "Von der ersten Idee bis zur fertigen Website ging alles unglaublich schnell – und das Ergebnis sieht richtig professionell aus.",
+      author: "Kunde aus dem Handwerk",
+      context: "Neue Firmenwebsite",
+    },
+    {
+      rating: 5,
+      quote: "Super sympathisch, immer erreichbar und alles ohne Fachchinesisch erklärt. So stelle ich mir Zusammenarbeit vor.",
+      author: "Kundin · Kosmetikstudio",
+      context: "Website-Relaunch",
+    },
+    {
+      rating: 5,
+      quote: "Seit der neuen Website bekommen wir spürbar mehr Anfragen – auch von Kunden, die uns vorher gar nicht kannten.",
+      author: "Kunde · Garten- und Landschaftsbau",
+      context: "Website & SEO",
+    },
+    {
+      rating: 5,
+      quote: "Unsere Kunden sprechen uns jetzt auf die tolle Website an. Genau so haben wir uns das gewünscht.",
+      author: "Kundin · Friseursalon",
+      context: "Neue Website",
+    },
+    {
+      rating: 5,
+      quote: "Klare Absprachen, fairer Preis und am Ende sogar schneller fertig als geplant. Absolute Empfehlung.",
+      author: "Kunde · Dienstleistung",
+      context: "Landingpage",
+    },
+    {
+      rating: 5,
+      quote: "Die Optimierung hat sich gelohnt: Wir werden bei Google viel besser gefunden und das merken wir täglich.",
+      author: "Kunde · Fachgeschäft",
+      context: "Modernisierung & SEO",
+    },
+  ],
+} as const;
+
+/**
+ * ERFOLGSGESCHICHTEN
+ * Monatliche Werte für 12 Monate (6 vor und 6 nach dem Relaunch).
+ * Echte Zahlen z. B. aus Google Search Console oder Analytics eintragen.
+ * `placeholder: true` kennzeichnet die Diagramme sichtbar als „Beispieldaten“.
+ */
+export const successStories = {
+  placeholder: true,
+  eyebrow: "Erfolgsgeschichten",
+  headline: "Websites, die sich *messbar* lohnen.",
+  intro:
+    "Eine gute Website sieht nicht nur schön aus – sie bringt Besucher und Anfragen. So haben sich Besucherzahlen und Anfragen nach dem Relaunch entwickelt.",
+  months: ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"],
+  /** Index des Monats, in dem die neue Website online ging */
+  relaunchIndex: 6,
+  items: [
+    {
+      key: "handwerk",
+      category: "Handwerk & Bau",
+      title: "Mehr Aufträge für einen regionalen Handwerksbetrieb",
+      challenge: "Die alte Website war veraltet, auf dem Smartphone kaum nutzbar und bei Google nahezu unsichtbar.",
+      solution: "Neues, klares Design, Leistungsseiten mit regionalem Bezug, schnelle Ladezeiten und ein einfaches Anfrageformular.",
+      quote: "Wir werden jetzt regelmäßig über Google gefunden – das war vorher nie so.",
+      visits: [310, 295, 330, 320, 345, 335, 520, 690, 810, 905, 980, 1060],
+      inquiries: [3, 4, 3, 5, 4, 4, 7, 9, 11, 12, 14, 15],
+      loadTime: { before: "4,8 s", after: "1,1 s" },
+    },
+    {
+      key: "beauty",
+      category: "Beauty & Lifestyle",
+      title: "Volle Terminbücher für ein Kosmetikstudio",
+      challenge: "Viele Interessenten fanden das Studio auf Instagram, aber die Website überzeugte nicht und Terminanfragen blieben aus.",
+      solution: "Editoriales Design, übersichtliche Preisliste, Online-Terminanfrage und optimierte Texte für lokale Suchanfragen.",
+      quote: "Die meisten Neukundinnen kommen inzwischen direkt über die Website.",
+      visits: [420, 440, 410, 455, 470, 450, 690, 880, 1010, 1150, 1240, 1320],
+      inquiries: [6, 5, 7, 6, 6, 7, 11, 14, 17, 19, 20, 22],
+      loadTime: { before: "5,6 s", after: "0,9 s" },
+    },
+    {
+      key: "garten",
+      category: "Garten & Landschaft",
+      title: "Hochwertige Projekte für einen Gartengestalter",
+      challenge: "Hochwertige Arbeit, aber ein Auftritt, der das nicht zeigte – und kaum Anfragen für größere Projekte.",
+      solution: "Großformatige Projektbilder, klare Leistungsstruktur, Ablauf-Erklärung und gezielte Optimierung auf die Region.",
+      quote: "Die Anfragen sind deutlich gestiegen – und es sind genau die Projekte, die wir machen wollen.",
+      visits: [260, 280, 300, 290, 310, 305, 470, 600, 720, 800, 860, 930],
+      inquiries: [2, 3, 2, 3, 3, 3, 5, 7, 8, 9, 10, 11],
+      loadTime: { before: "6,2 s", after: "1,2 s" },
+    },
+  ],
 } as const;

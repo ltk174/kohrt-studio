@@ -103,4 +103,6 @@ Web3Forms in der Datenschutzerklärung erwähnen.
 - [ ] Portraitfoto ablegen
 - [ ] Domain `prodesign.studio` registrieren und mit Vercel verbinden
 - [ ] Web3Forms-Access-Key einrichten (siehe unten) – vorher kommen keine Anfragen an!
+- [ ] Kundenstimmen (`reviews`) durch echte, freigegebene Zitate ersetzen, dann `reviews.placeholder` auf `false`
+- [ ] Erfolgsgeschichten (`successStories`) mit echten Zahlen (z. B. Google Search Console) füllen, dann `successStories.placeholder` auf `false`
 - [ ] Inhalte und Preise final prüfen
