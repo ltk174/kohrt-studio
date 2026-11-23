@@ -1,4 +1,4 @@
-import { owner, pricing, site } from "@/config/site";
+import { company, pricing, site } from "@/config/site";
 
 /** Strukturierte Daten für Suchmaschinen (schema.org). */
 export function JsonLd() {
@@ -9,8 +9,15 @@ export function JsonLd() {
     url: site.url,
     slogan: site.claim,
     description: site.description,
-    founder: { "@type": "Person", name: owner.name },
-    areaServed: "DE",
+    legalName: company.name,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: company.street,
+      postalCode: company.postalCode,
+      addressLocality: company.city,
+      addressCountry: "AT",
+    },
+    areaServed: ["AT", "DE"],
     knowsLanguage: "de",
     makesOffer: [
       {

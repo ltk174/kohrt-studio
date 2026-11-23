@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/brand/Logo";
-import { contact, legalNavigation, navigation, owner, site } from "@/config/site";
+import { company, contact, legalNavigation, navigation, owner, site } from "@/config/site";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -51,7 +51,7 @@ export function Footer() {
 
         <div className="mt-8 flex flex-col gap-4 border-t border-line py-8 text-sm text-ink-muted sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {site.shortName} · {owner.name}
+            © {year} {site.shortName} · ein Angebot der {company.name}
           </p>
           <ul className="flex gap-6">
             {legalNavigation.map((item) => (

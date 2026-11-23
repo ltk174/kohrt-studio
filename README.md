@@ -16,7 +16,7 @@ Gebaut mit Next.js 16 (App Router), TypeScript, Tailwind CSS 4 und Lucide-Icons.
 | `/designstudien/` | Die drei Designstudien in großen, scrollbaren Vorschaufenstern |
 | `/ueber-mich/` | Persönliche Vorstellung mit Portrait, Arbeitsweise |
 | `/kontakt/` | Mehrstufiger Anfrage-Assistent und FAQ |
-| `/impressum/`, `/datenschutz/` | **Platzhalter** – vor Veröffentlichung ausfüllen! |
+| `/impressum/`, `/datenschutz/` | Impressum (ECG, UGB, § 25 MedienG) und Datenschutzerklärung (DSGVO/DSG) – Daten in `company` und `privacy` in `site.ts` |
 | `/vorschau/<studie>/` | Vollständige Demo-Seiten der Designstudien (nicht indexiert) |
 
 ## Inhalte anpassen
@@ -103,7 +103,8 @@ Den genutzten Dienst in der Datenschutzerklärung erwähnen.
 
 ## Vor dem Livegang
 
-- [ ] Impressum und Datenschutzerklärung mit rechtlich geprüften Angaben füllen
+- [ ] Nach Firmenbuch-Eintragung `registryNumber`, `registryCourt`, `vatId` (und ggf. Gewerbe/Kammer) in `company` ergänzen
+- [ ] Impressum und Datenschutzerklärung rechtlich prüfen lassen
 - [ ] Portraitfoto ablegen
 - [ ] Domain `prodesign.studio` registrieren und mit Vercel verbinden
 - [ ] Postfach `info@prodesign.studio` einrichten und Formular einmalig aktivieren (siehe „Anfrage-Formular einrichten“)

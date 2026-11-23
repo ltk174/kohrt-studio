@@ -20,7 +20,7 @@ export const site = {
   claim: "Starke Websites. Faire Preise.",
   description:
     "Modernes Webdesign für kleine und mittelständische Unternehmen. Individuell gestaltet, professionell umgesetzt und zum transparenten Fixpreis. Erster Designvorschlag kostenlos und unverbindlich.",
-  locale: "de_DE",
+  locale: "de_AT",
   language: "de",
 } as const;
 
@@ -539,9 +539,51 @@ export const studies: Study[] = [
   },
 ];
 
-export const legal = {
-  placeholderNotice:
-    "Diese Seite ist ein Platzhalter. Vor der Veröffentlichung der Website müssen hier die vollständigen und rechtlich geprüften Pflichtangaben ergänzt werden.",
+/* ------------------------------------------------------------------ */
+/* Rechtliches: Impressum & Datenschutz (österreichisches Recht)       */
+/* ------------------------------------------------------------------ */
+
+export const company = {
+  /** Firma laut Gesellschaftsvertrag */
+  name: "LLPK Holding GmbH (in Gründung)",
+  legalForm: "Gesellschaft mit beschränkter Haftung (in Gründung)",
+  managingDirectors: ["A. Engel", "L.-T. Kohrt"],
+  street: "Reifersdorfer Str. 125",
+  postalCode: "8723",
+  city: "Reifersdorf",
+  country: "Österreich",
+  /** E-Mail-Adresse nur als Grafik (Spamschutz) – Datei: public/images/impressum-email.svg */
+  emailImage: { src: "/images/impressum-email.svg", width: 1422, height: 107 },
+  phone: "auf Anfrage",
+  /** Unternehmensgegenstand für die Offenlegung nach § 25 MedienG – bitte mit Gesellschaftsvertrag abgleichen */
+  purpose: "Webdesign, Erstellung und Betreuung von Websites",
+  brand: "prodesign.studio",
+  /*
+   * Nach Eintragung bzw. Vergabe ergänzen – leere Felder werden nicht angezeigt.
+   */
+  registryNumber: "", // Firmenbuchnummer, z. B. "FN 123456 a"
+  registryCourt: "", // Firmenbuchgericht, z. B. "Landesgericht Leoben"
+  vatId: "", // UID-Nummer, z. B. "ATU12345678"
+  trade: "", // Gewerbeberechtigung, z. B. "Dienstleistungen in der automatischen Datenverarbeitung und Informationstechnik"
+  tradeAuthority: "", // Gewerbebehörde, z. B. "Bezirkshauptmannschaft …"
+  chamber: "", // Kammerzugehörigkeit, z. B. "Wirtschaftskammer Steiermark"
+  pendingNote:
+    "Die Gesellschaft befindet sich in Gründung. Firmenbuchnummer, Firmenbuchgericht und UID-Nummer werden nach Eintragung bzw. Vergabe ergänzt.",
+} as const;
+
+export const privacy = {
+  updated: "November 2026",
+  /** Hosting-Anbieter der Website */
+  hosting: {
+    name: "Vercel Inc.",
+    address: "440 N Barranca Ave #4133, Covina, CA 91723, USA",
+    url: "https://vercel.com/legal/privacy-policy",
+  },
+  /** Dienst für den Versand des Anfrage-Formulars */
+  formService: {
+    name: "FormSubmit",
+    url: "https://formsubmit.co",
+  },
 } as const;
 
 /* ------------------------------------------------------------------ */
