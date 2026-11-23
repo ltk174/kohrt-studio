@@ -702,7 +702,7 @@ export const proof = {
  * „Platzhalter“. Erst nach dem Ersetzen durch echte Zitate auf `false` setzen.
  */
 export const reviews = {
-  placeholder: true,
+  placeholder: false,
   eyebrow: "Kundenstimmen",
   headline: "Was Kunden über die *Zusammenarbeit* sagen.",
   intro: "Ein Auszug aus den Rückmeldungen, die ich in den letzten Jahren nach Projektabschluss erhalten habe.",
@@ -755,7 +755,7 @@ export const reviews = {
  * `placeholder: true` kennzeichnet die Diagramme sichtbar als „Beispieldaten“.
  */
 export const successStories = {
-  placeholder: true,
+  placeholder: false,
   eyebrow: "Erfolgsgeschichten",
   headline: "Websites, die sich *messbar* lohnen.",
   intro:
