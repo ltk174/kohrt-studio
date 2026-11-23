@@ -96,7 +96,7 @@ Den genutzten Dienst in der Datenschutzerklärung erwähnen.
 ## Technik & Datenschutz
 
 - Schriften (Manrope, Inter, Instrument Serif; in den Studien Cormorant Garamond, Archivo, Bodoni Moda, Jost) werden **lokal** ausgeliefert – keine Verbindung zu Google Fonts.
-- Keine Tracking-Tools, keine Cookies, keine externen Skripte.
+- Google Analytics 4 (`analytics.measurementId` in `site.ts`) lädt **nur nach Einwilligung** über den Cookie-Hinweis; Widerruf über „Cookie-Einstellungen“ im Footer. Ohne Einwilligung: keine Cookies, keine externen Skripte.
 - Anfrage-Assistent: 7 kurze Schritte, fast nur Klicks. Beim Klick auf „Erstentwurf anfordern“ wird die Anfrage direkt über einen Formular-Dienst (FormSubmit bzw. Web3Forms) per E-Mail zugestellt – ohne E-Mail-Programm, die Empfängeradresse ist nirgends sichtbar. Die E-Mail enthält eine strukturierte Übersicht und ein **KI-Briefing**, das direkt in ein KI-Werkzeug kopiert werden kann.
 - Animationen respektieren `prefers-reduced-motion`.
 - SEO: Metadaten pro Seite, Open Graph, `sitemap.xml`, `robots.txt`, strukturierte Daten (schema.org).

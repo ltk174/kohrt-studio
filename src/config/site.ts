@@ -799,3 +799,20 @@ export const successStories = {
     },
   ],
 } as const;
+
+/* ------------------------------------------------------------------ */
+/* Google Analytics (nur nach Einwilligung)                            */
+/* ------------------------------------------------------------------ */
+
+export const analytics = {
+  /** GA4-Mess-ID. Leer lassen, um Analytics komplett zu deaktivieren. */
+  measurementId: "G-HH31N2CHBV",
+  /** Speicherschlüssel für die Einwilligung im Browser (technisch notwendig) */
+  storageKey: "pds-consent-v1",
+  banner: {
+    title: "Darf ich mitlesen, wie die Website genutzt wird?",
+    text: "Mit deiner Einwilligung nutze ich Google Analytics, um anonymisiert zu verstehen, welche Inhalte gefragt sind. Dabei werden Cookies gesetzt und Daten an Google (auch in die USA) übermittelt. Du kannst deine Entscheidung jederzeit in den Cookie-Einstellungen ändern.",
+    accept: "Akzeptieren",
+    decline: "Ablehnen",
+  },
+} as const;

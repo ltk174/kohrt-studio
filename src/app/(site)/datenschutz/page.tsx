@@ -39,8 +39,11 @@ const sections: LegalSection[] = [
     title: "Das Wichtigste in Kürze",
     content: (
       <ul>
-        <li>Diese Website verwendet keine Cookies.</li>
-        <li>Es gibt keine Analyse- oder Tracking-Tools, keine Werbe-Netzwerke und keine Social-Media-Plugins.</li>
+        <li>
+          Cookies und Google Analytics werden nur eingesetzt, wenn du im Cookie-Hinweis ausdrücklich zustimmst. Ohne
+          Zustimmung werden keine Analyse-Cookies gesetzt und keine Daten an Google übermittelt.
+        </li>
+        <li>Es gibt keine Werbe-Netzwerke und keine Social-Media-Plugins.</li>
         <li>Schriften werden direkt von unserem Server geladen – es besteht keine Verbindung zu Google Fonts.</li>
         <li>
           Personenbezogene Daten verarbeiten wir nur, wenn du uns über das Anfrage-Formular oder per E-Mail kontaktierst,
@@ -108,6 +111,45 @@ const sections: LegalSection[] = [
           Zur Gestaltung des Erstentwurfs können wir die Projektangaben (ohne deinen Namen und deine E-Mail-Adresse) auch mit
           Unterstützung digitaler, KI-gestützter Werkzeuge verarbeiten. Der Entwurf wird anschließend von uns geprüft und
           überarbeitet.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "analytics",
+    title: "Cookies und Google Analytics",
+    content: (
+      <>
+        <p>
+          Mit deiner Einwilligung nutzen wir <strong>Google Analytics 4</strong>, einen Webanalysedienst der Google Ireland
+          Limited, Gordon House, Barrow Street, Dublin 4, Irland („Google“). Damit erfahren wir, wie Besucher unsere Website
+          nutzen – etwa welche Seiten aufgerufen werden, wie lange Besuche dauern und über welche Wege Besucher zu uns finden.
+          So können wir Inhalte und Angebot verbessern.
+        </p>
+        <p>
+          Google Analytics setzt dafür Cookies (z. B. <code>_ga</code> und <code>_ga_*</code>, Speicherdauer bis zu zwei
+          Jahre) und verarbeitet unter anderem gekürzte IP-Adressen, Geräte- und Browserinformationen, die ungefähre Region
+          sowie Informationen zu den aufgerufenen Seiten. Die Daten werden pseudonym verarbeitet; wir können sie keiner
+          bestimmten Person zuordnen.
+        </p>
+        <p>
+          <strong>Rechtsgrundlage</strong> ist deine Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO und § 165 Abs. 3
+          Telekommunikationsgesetz 2021. Ohne Einwilligung wird Google Analytics nicht geladen. Zur Speicherung deiner
+          Entscheidung wird im Browser ein technisch notwendiger Eintrag (Local Storage) abgelegt.
+        </p>
+        <p>
+          <strong>Widerruf:</strong> Du kannst deine Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen – über den
+          Link „Cookie-Einstellungen“ im Footer jeder Seite. Bestehende Analyse-Cookies werden dabei gelöscht.
+        </p>
+        <p>
+          <strong>Übermittlung in die USA:</strong> Es kann nicht ausgeschlossen werden, dass Daten an die Google LLC in den
+          USA übermittelt werden. Google LLC ist nach dem EU-US Data Privacy Framework zertifiziert; die Übermittlung stützt
+          sich auf den Angemessenheitsbeschluss der Europäischen Kommission (Art. 45 DSGVO) sowie ergänzend auf
+          Standardvertragsklauseln (Art. 46 DSGVO).
+        </p>
+        <p>
+          <strong>Speicherdauer:</strong> Die Analysedaten werden nach 14 Monaten automatisch gelöscht. Weitere Informationen:{" "}
+          <a href="https://policies.google.com/privacy">Datenschutzerklärung von Google</a>.
         </p>
       </>
     ),

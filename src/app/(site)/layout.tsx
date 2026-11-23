@@ -1,6 +1,7 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { RevealManager } from "@/components/ui/RevealManager";
+import { ConsentManager } from "@/components/consent/ConsentManager";
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -17,6 +18,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       </main>
       <Footer />
       <RevealManager />
+      <ConsentManager />
     </>
   );
 }

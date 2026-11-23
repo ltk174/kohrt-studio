@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/brand/Logo";
+import { ConsentSettingsButton } from "@/components/consent/ConsentManager";
 import { company, contact, legalNavigation, navigation, owner, site } from "@/config/site";
 
 export function Footer() {
@@ -61,7 +62,10 @@ export function Footer() {
                 </Link>
               </li>
             ))}
-          </ul>
+            <li>
+                <ConsentSettingsButton className="transition-colors hover:text-ink" />
+              </li>
+            </ul>
         </div>
       </div>
     </footer>
