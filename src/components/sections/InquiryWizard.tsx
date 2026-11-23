@@ -225,9 +225,13 @@ async function deliver(data: Submission) {
   }
 
   if (data.honeypot) return; // Spam-Roboter: still „erfolgreich“, aber nichts senden
+  // FormSubmit antwortet teils erst nach 20–40 Sekunden – großzügiges Zeitlimit
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), 75000);
   const response = await fetch(`https://formsubmit.co/ajax/${formDelivery.formsubmitTarget}`, {
     method: "POST",
     headers,
+    signal: controller.signal,
     body: JSON.stringify({
       _subject: data.subject,
       _template: "box",
@@ -237,14 +241,12 @@ async function deliver(data: Submission) {
       Unternehmen: data.company,
       Anfrage: data.message,
     }),
-  });
+  }).finally(() => window.clearTimeout(timeout));
   const result = (await response.json().catch(() => null)) as { success?: string | boolean; message?: string } | null;
   const ok = result?.success === true || result?.success === "true";
   if (!response.ok || !ok) {
-    if (result?.message && /activat/i.test(result.message)) {
-      // Hinweis für den Website-Betreiber: Formular muss einmalig per E-Mail aktiviert werden
-      console.warn("FormSubmit: Formular noch nicht aktiviert –", result.message);
-    }
+    // Hinweis für den Website-Betreiber (Browser-Konsole), z. B. „This form needs Activation“
+    console.warn(`FormSubmit (${response.status}):`, result?.message ?? "keine Antwort");
     throw new Error("Versand fehlgeschlagen");
   }
 }
@@ -274,6 +276,7 @@ export function InquiryWizard({ className }: { className?: string }) {
   const [errors, setErrors] = useState<Partial<Record<keyof Answers, string>>>({});
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
+  const [slow, setSlow] = useState(false);
   const [sendError, setSendError] = useState("");
   const honeypotRef = useRef<HTMLInputElement>(null);
 
@@ -359,7 +362,9 @@ export function InquiryWizard({ className }: { className?: string }) {
     if (sending) return;
     const { subject, body } = buildBriefing(values);
     setSending(true);
+    setSlow(false);
     setSendError("");
+    const slowTimer = window.setTimeout(() => setSlow(true), 5000);
     try {
       await deliver({
         subject,
@@ -376,7 +381,9 @@ export function InquiryWizard({ className }: { className?: string }) {
         "Deine Anfrage konnte leider nicht gesendet werden. Bitte prüfe deine Internetverbindung und versuche es noch einmal.",
       );
     } finally {
+      window.clearTimeout(slowTimer);
       setSending(false);
+      setSlow(false);
     }
   };
 
@@ -720,6 +727,11 @@ export function InquiryWizard({ className }: { className?: string }) {
             </button>
           )}
         </div>
+        {sending && slow && (
+          <p role="status" className="mt-4 text-[0.88rem] text-forest">
+            Deine Anfrage wird übermittelt – das kann bis zu einer halben Minute dauern. Bitte schließe das Fenster nicht.
+          </p>
+        )}
         {step.id === "kontakt" && (
           <p className="mt-5 text-[0.8rem] leading-relaxed text-ink-muted">
             {inquiry.privacyNote} Dein Erstentwurf kann innerhalb von {freeDraft.hours} Stunden bei dir sein ({freeDraft.footnote.charAt(0).toLowerCase() + freeDraft.footnote.slice(1, -1)}).
