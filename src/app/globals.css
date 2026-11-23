@@ -193,6 +193,55 @@
   }
 }
 
+/* Fließtext auf Rechtsseiten */
+.legal-prose {
+  color: var(--color-ink-soft);
+  line-height: 1.7;
+}
+.legal-prose > * + * {
+  margin-top: 1rem;
+}
+.legal-prose h3 {
+  margin-top: 1.75rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.legal-prose strong,
+.legal-prose dt {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.legal-prose ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+.legal-prose li + li {
+  margin-top: 0.35rem;
+}
+.legal-prose a {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--color-sage);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+.legal-prose dl {
+  display: grid;
+  grid-template-columns: 13.5rem minmax(0, 1fr);
+  gap: 0.6rem 1.25rem;
+}
+@media (width < 40rem) {
+  .legal-prose dl {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.15rem;
+  }
+  .legal-prose dd {
+    margin-bottom: 0.6rem;
+  }
+}
+
 /* Schrittwechsel im Anfrage-Assistenten */
 @keyframes wizard-in {
   from {

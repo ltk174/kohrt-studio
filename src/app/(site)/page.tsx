@@ -3,6 +3,9 @@ import { Hero } from "@/components/sections/Hero";
 import { Benefits } from "@/components/sections/Benefits";
 import { FreeDraft } from "@/components/sections/FreeDraft";
 import { Seo } from "@/components/sections/Seo";
+import { Stats } from "@/components/sections/Stats";
+import { Reviews } from "@/components/sections/Reviews";
+import { SuccessStories } from "@/components/sections/SuccessStories";
 import { StudiesShowcase } from "@/components/sections/StudiesShowcase";
 import { Pricing } from "@/components/sections/Pricing";
 import { About } from "@/components/sections/About";
@@ -23,8 +26,11 @@ export default function HomePage() {
       <JsonLd />
       <Hero />
       <FreeDraft />
+      <Stats />
       <Benefits />
       <StudiesShowcase />
+      <SuccessStories className="bg-paper/60" />
+      <Reviews />
       <Pricing />
       <Seo />
       <About className="bg-paper/60" />

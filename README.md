@@ -15,8 +15,8 @@ Gebaut mit Next.js 16 (App Router), TypeScript, Tailwind CSS 4 und Lucide-Icons.
 | `/leistungen/` | Erstentwurf, Leistungen, Preise, SEO, Zusatzleistungen, Ablauf, FAQ |
 | `/designstudien/` | Die drei Designstudien in großen, scrollbaren Vorschaufenstern |
 | `/ueber-mich/` | Persönliche Vorstellung mit Portrait, Arbeitsweise |
-| `/kontakt/` | Mehrstufiger Anfrage-Assistent (mailto) und FAQ |
-| `/impressum/`, `/datenschutz/` | **Platzhalter** – vor Veröffentlichung ausfüllen! |
+| `/kontakt/` | Mehrstufiger Anfrage-Assistent und FAQ |
+| `/impressum/`, `/datenschutz/` | Impressum (ECG, UGB, § 25 MedienG) und Datenschutzerklärung (DSGVO/DSG) – Daten in `company` und `privacy` in `site.ts` |
 | `/vorschau/<studie>/` | Vollständige Demo-Seiten der Designstudien (nicht indexiert) |
 
 ## Inhalte anpassen
@@ -26,7 +26,7 @@ Gebaut mit Next.js 16 (App Router), TypeScript, Tailwind CSS 4 und Lucide-Icons.
 
 - Text zwischen `*Sternchen*` in Überschriften wird als eleganter Akzent (kursive Serifenschrift in Grün) dargestellt.
 - Preise als Zahl pflegen (`price: 790`) – die Formatierung („790 €“) passiert automatisch.
-- `contact.displayEmail` ist die angezeigte Adresse, `contact.recipientEmail` die Adresse, an die Formular und Mail-Links gehen (beide `info@prodesign.studio`). Achtung: Die Empfängeradresse ist für Besucher im E-Mail-Programm sichtbar – keine private Adresse eintragen.
+- Auf der Website steht bewusst keine E-Mail-Adresse – Kontaktdaten nur im Impressum.
 - Die Antwortmöglichkeiten des Anfrage-Assistenten stehen unter `inquiry`, die Inhalte des 48-Stunden-Angebots unter `freeDraft`, der SEO-Bereich unter `seo`.
 
 ## Portraitfoto
@@ -76,18 +76,38 @@ Anschließend die Domain `prodesign.studio` in den Projekteinstellungen verbinde
 
 **Gewöhnliches Webhosting:** `npm run build` ausführen und den Inhalt des Ordners `out/` per FTP hochladen.
 
+## Anfrage-Formular einrichten
+
+Die Website hat keinen eigenen Server. Das Formular sendet die Antworten direkt an einen kostenlosen
+Formular-Dienst, der sie per E-Mail zustellt – beim Kunden öffnet sich kein E-Mail-Programm.
+
+**Standard: [FormSubmit.co](https://formsubmit.co)** (kein Konto, kein Schlüssel), Ziel: `formDelivery.formsubmitTarget` in `site.ts`.
+
+1. Postfach `info@prodesign.studio` einrichten (z. B. bei IONOS). Die Domain braucht dafür MX-Einträge.
+2. Einmal selbst eine Anfrage über die Website absenden. FormSubmit schickt eine Mail „Activate Form“ an das Postfach → Link klicken.
+3. Ab jetzt kommen alle Anfragen an. Optional den zufälligen Alias aus der Bestätigungsmail bei `formsubmitTarget` eintragen –
+   dann steht die Adresse nirgends mehr im Code.
+
+**Alternative: [Web3Forms](https://web3forms.com)** – Access Key als `NEXT_PUBLIC_WEB3FORMS_KEY` (Vercel) oder bei
+`formDelivery.web3formsKey` eintragen. Ist ein Key gesetzt, wird automatisch Web3Forms verwendet.
+
+Den genutzten Dienst in der Datenschutzerklärung erwähnen.
+
 ## Technik & Datenschutz
 
 - Schriften (Manrope, Inter, Instrument Serif; in den Studien Cormorant Garamond, Archivo, Bodoni Moda, Jost) werden **lokal** ausgeliefert – keine Verbindung zu Google Fonts.
-- Keine Tracking-Tools, keine Cookies, keine externen Skripte.
-- Anfrage-Assistent ohne Server: 7 kurze Schritte, fast nur Klicks. Beim Absenden öffnet sich das E-Mail-Programm mit einer strukturierten Anfrage inklusive **KI-Briefing** – dieser Absatz kann direkt in ein KI-Werkzeug kopiert werden, um den ersten Designentwurf zu erstellen.
+- Google Analytics 4 (`analytics.measurementId` in `site.ts`) lädt **nur nach Einwilligung** über den Cookie-Hinweis; Widerruf über „Cookie-Einstellungen“ im Footer. Ohne Einwilligung: keine Cookies, keine externen Skripte.
+- Anfrage-Assistent: 7 kurze Schritte, fast nur Klicks. Beim Klick auf „Erstentwurf anfordern“ wird die Anfrage direkt über einen Formular-Dienst (FormSubmit bzw. Web3Forms) per E-Mail zugestellt – ohne E-Mail-Programm, die Empfängeradresse ist nirgends sichtbar. Die E-Mail enthält eine strukturierte Übersicht und ein **KI-Briefing**, das direkt in ein KI-Werkzeug kopiert werden kann.
 - Animationen respektieren `prefers-reduced-motion`.
 - SEO: Metadaten pro Seite, Open Graph, `sitemap.xml`, `robots.txt`, strukturierte Daten (schema.org).
 
 ## Vor dem Livegang
 
-- [ ] Impressum und Datenschutzerklärung mit rechtlich geprüften Angaben füllen
+- [ ] Nach Firmenbuch-Eintragung `registryNumber`, `registryCourt`, `vatId` (und ggf. Gewerbe/Kammer) in `company` ergänzen
+- [ ] Impressum und Datenschutzerklärung rechtlich prüfen lassen
 - [ ] Portraitfoto ablegen
 - [ ] Domain `prodesign.studio` registrieren und mit Vercel verbinden
-- [ ] E-Mail-Adresse `info@prodesign.studio` einrichten (ggf. Weiterleitung ins eigene Postfach) – vorher kommen keine Anfragen an!
+- [ ] Postfach `info@prodesign.studio` einrichten und Formular einmalig aktivieren (siehe „Anfrage-Formular einrichten“)
+- [ ] Kundenstimmen (`reviews`) durch echte, freigegebene Zitate ersetzen, dann `reviews.placeholder` auf `false`
+- [ ] Erfolgsgeschichten (`successStories`) mit echten Zahlen (z. B. Google Search Console) füllen, dann `successStories.placeholder` auf `false`
 - [ ] Inhalte und Preise final prüfen

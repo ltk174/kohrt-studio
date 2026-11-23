@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Menu, Sparkles, X } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
-import { MailLink } from "@/components/ui/MailLink";
 import { contact, cta, navigation, site } from "@/config/site";
 import { cn } from "@/lib/format";
 
@@ -195,11 +194,7 @@ export function Header() {
                 <ArrowUpRight className="size-5" aria-hidden="true" />
               </span>
             </Link>
-            <p className="mt-6 text-sm text-ink-muted">
-              Oder schreib mir direkt:{" "}
-              <MailLink className="font-medium text-ink underline decoration-sage decoration-2 underline-offset-4" />
-            </p>
-            <p className="sr-only">{contact.responseNote}</p>
+            <p className="mt-6 text-sm text-ink-muted">{contact.responseNote}</p>
           </div>
         </nav>
       </div>

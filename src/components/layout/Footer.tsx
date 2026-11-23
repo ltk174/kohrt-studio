@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/brand/Logo";
-import { MailLink } from "@/components/ui/MailLink";
-import { contact, legalNavigation, navigation, owner, site } from "@/config/site";
+import { ConsentSettingsButton } from "@/components/consent/ConsentManager";
+import { company, contact, legalNavigation, navigation, owner, site } from "@/config/site";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -37,9 +37,6 @@ export function Footer() {
             <ul className="mt-5 space-y-3">
               <li className="text-ink">{owner.name}</li>
               <li>
-                <MailLink className="text-ink underline decoration-sage decoration-2 underline-offset-4 transition-colors hover:text-forest" />
-              </li>
-              <li>
                 <Link href="/kontakt/#anfrage" className="text-ink transition-colors hover:text-forest">
                   Kostenloser Erstentwurf
                 </Link>
@@ -55,7 +52,7 @@ export function Footer() {
 
         <div className="mt-8 flex flex-col gap-4 border-t border-line py-8 text-sm text-ink-muted sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {site.shortName} · {owner.name}
+            © {year} {site.shortName} · ein Angebot der {company.name}
           </p>
           <ul className="flex gap-6">
             {legalNavigation.map((item) => (
@@ -65,7 +62,10 @@ export function Footer() {
                 </Link>
               </li>
             ))}
-          </ul>
+            <li>
+                <ConsentSettingsButton className="transition-colors hover:text-ink" />
+              </li>
+            </ul>
         </div>
       </div>
     </footer>

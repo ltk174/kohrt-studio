@@ -14,13 +14,13 @@
 
 export const site = {
   name: "PRODESIGN STUDIO",
-  shortName: "Prodesign Studio",
+  shortName: "prodesign.studio",
   domain: "prodesign.studio",
   url: "https://prodesign.studio",
   claim: "Starke Websites. Faire Preise.",
   description:
     "Modernes Webdesign für kleine und mittelständische Unternehmen. Individuell gestaltet, professionell umgesetzt und zum transparenten Fixpreis. Erster Designvorschlag kostenlos und unverbindlich.",
-  locale: "de_DE",
+  locale: "de_AT",
   language: "de",
 } as const;
 
@@ -35,25 +35,42 @@ export const owner = {
    */
   portrait: {
     src: "/images/alexander-engel.jpg",
-    alt: "Portrait von Alexander Engel, Gründer von Prodesign Studio",
-    width: 1200,
-    height: 1500,
+    alt: "Portrait von Alexander Engel, Gründer von prodesign.studio",
+    width: 878,
+    height: 1086,
   },
 } as const;
 
 export const contact = {
-  /** Diese Adresse wird auf der Website angezeigt. */
-  displayEmail: "info@prodesign.studio",
-  /**
-   * An diese Adresse gehen Formular- und Mail-Links (mailto).
-   * Achtung: Diese Adresse ist für Besucher sichtbar (im E-Mail-Programm).
-   * Deshalb hier bewusst keine private Adresse eintragen, sondern
-   * info@prodesign.studio einrichten und ggf. an das eigene Postfach weiterleiten.
+  /*
+   * Bewusst keine E-Mail-Adresse und keine Telefonnummer auf der Website.
+   * Kontaktdaten stehen ausschließlich im Impressum.
    */
-  recipientEmail: "info@prodesign.studio",
-  /** Telefonnummer bewusst leer – erst eintragen, wenn vorhanden. */
-  phone: "",
   responseNote: "Ich melde mich in der Regel innerhalb von ein bis zwei Werktagen persönlich bei dir.",
+} as const;
+
+/**
+ * VERSAND DES ANFRAGE-FORMULARS
+ * Die Website ist statisch (kein eigener Server). Anfragen werden daher über
+ * einen kostenlosen Formular-Dienst per E-Mail zugestellt – direkt aus dem
+ * Formular, ohne dass sich beim Kunden ein E-Mail-Programm öffnet.
+ *
+ * Standard: FormSubmit.co (kein Konto, kein Schlüssel nötig)
+ * 1. Postfach für `formsubmitTarget` einrichten (Domain braucht MX-Einträge).
+ * 2. Erste Anfrage absenden → FormSubmit schickt einmalig eine Mail
+ *    „Activate Form“ an diese Adresse → Link anklicken. Fertig.
+ * 3. Der zufällige Alias aus der Bestätigungsmail ist bei `formsubmitTarget`
+ *    eingetragen (aktiviert, Ziel: info@prodesign.studio) – die E-Mail-Adresse
+ *    steht damit nirgends im Code.
+ *
+ * Alternative: Web3Forms – Access Key bei `web3formsKey` oder als
+ * Umgebungsvariable `NEXT_PUBLIC_WEB3FORMS_KEY` eintragen. Ist ein Key
+ * vorhanden, wird automatisch Web3Forms verwendet.
+ */
+export const formDelivery = {
+  formsubmitTarget: "cee8d3d23430e4ae52f0247a963151c8",
+  web3formsKey: "",
+  fromName: "prodesign.studio – Anfrage-Assistent",
 } as const;
 
 export const navigation = [
@@ -106,13 +123,13 @@ export const hero = {
   secondaryCta: { label: "Designbeispiele entdecken", href: "/#designstudien" },
   facts: [
     "Erster Designvorschlag kostenlos & unverbindlich",
+    "Über 250 Webprojekte aus mehr als 10 Jahren",
     "Websites ab 790 € netto zum Fixpreis",
-    "SEO-Grundoptimierung inklusive",
   ],
 } as const;
 
 export const benefits = {
-  eyebrow: "Warum Prodesign Studio",
+  eyebrow: "Warum prodesign.studio",
   headline: "Gutes Webdesign muss *nicht kompliziert* sein.",
   intro:
     "Eine professionelle Website ist für viele Unternehmen das wichtigste Aushängeschild. Ich sorge dafür, dass der Weg dorthin klar, angenehm und bezahlbar bleibt.",
@@ -338,8 +355,9 @@ export const workflow = {
 export const about = {
   eyebrow: "Über mich",
   headline: "Hi, ich bin *Alexander.*",
-  lead: "Ich bin Alexander Engel und der Kopf hinter Prodesign Studio.",
+  lead: "Ich bin Alexander Engel und der Kopf hinter prodesign.studio.",
   paragraphs: [
+    "Seit über zehn Jahren gestalte ich Websites für Unternehmen – mehr als 250 Projekte sind dabei entstanden, vom Handwerksbetrieb bis zum Kosmetikstudio.",
     "Ich bin überzeugt: Ein professioneller Internetauftritt muss weder kompliziert noch unbezahlbar sein.",
     "Mit modernen Technologien, einem Gespür für gutes Design und effizienten Abläufen entwickle ich Websites, die Unternehmen überzeugend präsentieren – ohne unnötige Kosten und ohne komplizierte Prozesse.",
     "Besonders wichtig ist mir dabei eine persönliche, unkomplizierte Zusammenarbeit. Bei mir gibt es keine langen Abstimmungswege und keine wechselnden Ansprechpartner, sondern direkten Kontakt und klare Vereinbarungen.",
@@ -521,9 +539,51 @@ export const studies: Study[] = [
   },
 ];
 
-export const legal = {
-  placeholderNotice:
-    "Diese Seite ist ein Platzhalter. Vor der Veröffentlichung der Website müssen hier die vollständigen und rechtlich geprüften Pflichtangaben ergänzt werden.",
+/* ------------------------------------------------------------------ */
+/* Rechtliches: Impressum & Datenschutz (österreichisches Recht)       */
+/* ------------------------------------------------------------------ */
+
+export const company = {
+  /** Firma laut Gesellschaftsvertrag */
+  name: "LLPK Holding GmbH (in Gründung)",
+  legalForm: "Gesellschaft mit beschränkter Haftung (in Gründung)",
+  managingDirectors: ["A. Engel", "L.-T. Kohrt"],
+  street: "Reifersdorfer Str. 125",
+  postalCode: "8723",
+  city: "Reifersdorf",
+  country: "Österreich",
+  /** E-Mail-Adresse nur als Grafik (Spamschutz) – Datei: public/images/impressum-email.svg */
+  emailImage: { src: "/images/impressum-email.svg", width: 1422, height: 107 },
+  phone: "auf Anfrage",
+  /** Unternehmensgegenstand für die Offenlegung nach § 25 MedienG – bitte mit Gesellschaftsvertrag abgleichen */
+  purpose: "Webdesign, Erstellung und Betreuung von Websites",
+  brand: "prodesign.studio",
+  /*
+   * Nach Eintragung bzw. Vergabe ergänzen – leere Felder werden nicht angezeigt.
+   */
+  registryNumber: "", // Firmenbuchnummer, z. B. "FN 123456 a"
+  registryCourt: "", // Firmenbuchgericht, z. B. "Landesgericht Leoben"
+  vatId: "", // UID-Nummer, z. B. "ATU12345678"
+  trade: "", // Gewerbeberechtigung, z. B. "Dienstleistungen in der automatischen Datenverarbeitung und Informationstechnik"
+  tradeAuthority: "", // Gewerbebehörde, z. B. "Bezirkshauptmannschaft …"
+  chamber: "", // Kammerzugehörigkeit, z. B. "Wirtschaftskammer Steiermark"
+  pendingNote:
+    "Die Gesellschaft befindet sich in Gründung. Firmenbuchnummer, Firmenbuchgericht und UID-Nummer werden nach Eintragung bzw. Vergabe ergänzt.",
+} as const;
+
+export const privacy = {
+  updated: "November 2026",
+  /** Hosting-Anbieter der Website */
+  hosting: {
+    name: "Vercel Inc.",
+    address: "440 N Barranca Ave #4133, Covina, CA 91723, USA",
+    url: "https://vercel.com/legal/privacy-policy",
+  },
+  /** Dienst für den Versand des Anfrage-Formulars */
+  formService: {
+    name: "FormSubmit",
+    url: "https://formsubmit.co",
+  },
 } as const;
 
 /* ------------------------------------------------------------------ */
@@ -615,5 +675,144 @@ export const inquiry = {
     { value: "nein", label: "Nein, danke" },
   ],
   privacyNote:
-    "Beim Absenden öffnet sich dein E-Mail-Programm mit deiner vorbereiteten Anfrage. Auf dieser Website werden keine Daten gespeichert.",
+    "Deine Angaben werden verschlüsselt übermittelt und ausschließlich zur Bearbeitung deiner Anfrage verwendet. Mehr dazu in der Datenschutzerklärung.",
+} as const;
+
+/* ------------------------------------------------------------------ */
+/* Vertrauen: Kennzahlen, Kundenstimmen, Erfolgsgeschichten            */
+/* ------------------------------------------------------------------ */
+
+export const proof = {
+  eyebrow: "Erfahrung",
+  stats: [
+    { value: "250", suffix: "+", label: "erfolgreich umgesetzte Webprojekte" },
+    { value: "10", suffix: "+", label: "Jahre Erfahrung im Webdesign" },
+    { value: "48", suffix: " h", label: "bis zu deinem kostenlosen Erstentwurf" },
+    { value: "1", suffix: "", label: "fester Ansprechpartner – von Anfang bis Ende" },
+  ],
+} as const;
+
+/**
+ * KUNDENSTIMMEN
+ * Wichtig (UWG): Veröffentliche nur echte Rückmeldungen, möglichst wörtlich und
+ * mit Einverständnis der Kunden. `sourceNote` muss beschreiben, woher die
+ * Bewertungen stammen und ob/wie sie geprüft wurden.
+ *
+ * `placeholder: true` zeigt an jedem Eintrag eine sichtbare Markierung
+ * „Platzhalter“. Erst nach dem Ersetzen durch echte Zitate auf `false` setzen.
+ */
+export const reviews = {
+  placeholder: true,
+  eyebrow: "Kundenstimmen",
+  headline: "Was Kunden über die *Zusammenarbeit* sagen.",
+  intro: "Ein Auszug aus den Rückmeldungen, die ich in den letzten Jahren nach Projektabschluss erhalten habe.",
+  sourceNote:
+    "Auszüge aus Kundenrückmeldungen per E-Mail, veröffentlicht mit Zustimmung der Kunden. Es handelt sich nicht um Bewertungen einer Bewertungsplattform.",
+  items: [
+    {
+      rating: 5,
+      quote: "Von der ersten Idee bis zur fertigen Website ging alles unglaublich schnell – und das Ergebnis sieht richtig professionell aus.",
+      author: "Kunde aus dem Handwerk",
+      context: "Neue Firmenwebsite",
+    },
+    {
+      rating: 5,
+      quote: "Super sympathisch, immer erreichbar und alles ohne Fachchinesisch erklärt. So stelle ich mir Zusammenarbeit vor.",
+      author: "Kundin · Kosmetikstudio",
+      context: "Website-Relaunch",
+    },
+    {
+      rating: 5,
+      quote: "Seit der neuen Website bekommen wir spürbar mehr Anfragen – auch von Kunden, die uns vorher gar nicht kannten.",
+      author: "Kunde · Garten- und Landschaftsbau",
+      context: "Website & SEO",
+    },
+    {
+      rating: 5,
+      quote: "Unsere Kunden sprechen uns jetzt auf die tolle Website an. Genau so haben wir uns das gewünscht.",
+      author: "Kundin · Friseursalon",
+      context: "Neue Website",
+    },
+    {
+      rating: 5,
+      quote: "Klare Absprachen, fairer Preis und am Ende sogar schneller fertig als geplant. Absolute Empfehlung.",
+      author: "Kunde · Dienstleistung",
+      context: "Landingpage",
+    },
+    {
+      rating: 5,
+      quote: "Die Optimierung hat sich gelohnt: Wir werden bei Google viel besser gefunden und das merken wir täglich.",
+      author: "Kunde · Fachgeschäft",
+      context: "Modernisierung & SEO",
+    },
+  ],
+} as const;
+
+/**
+ * ERFOLGSGESCHICHTEN
+ * Monatliche Werte für 12 Monate (6 vor und 6 nach dem Relaunch).
+ * Echte Zahlen z. B. aus Google Search Console oder Analytics eintragen.
+ * `placeholder: true` kennzeichnet die Diagramme sichtbar als „Beispieldaten“.
+ */
+export const successStories = {
+  placeholder: true,
+  eyebrow: "Erfolgsgeschichten",
+  headline: "Websites, die sich *messbar* lohnen.",
+  intro:
+    "Eine gute Website sieht nicht nur schön aus – sie bringt Besucher und Anfragen. So haben sich Besucherzahlen und Anfragen nach dem Relaunch entwickelt.",
+  months: ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"],
+  /** Index des Monats, in dem die neue Website online ging */
+  relaunchIndex: 6,
+  items: [
+    {
+      key: "handwerk",
+      category: "Handwerk & Bau",
+      title: "Mehr Aufträge für einen regionalen Handwerksbetrieb",
+      challenge: "Die alte Website war veraltet, auf dem Smartphone kaum nutzbar und bei Google nahezu unsichtbar.",
+      solution: "Neues, klares Design, Leistungsseiten mit regionalem Bezug, schnelle Ladezeiten und ein einfaches Anfrageformular.",
+      quote: "Wir werden jetzt regelmäßig über Google gefunden – das war vorher nie so.",
+      visits: [310, 295, 330, 320, 345, 335, 520, 690, 810, 905, 980, 1060],
+      inquiries: [3, 4, 3, 5, 4, 4, 7, 9, 11, 12, 14, 15],
+      loadTime: { before: "4,8 s", after: "1,1 s" },
+    },
+    {
+      key: "beauty",
+      category: "Beauty & Lifestyle",
+      title: "Volle Terminbücher für ein Kosmetikstudio",
+      challenge: "Viele Interessenten fanden das Studio auf Instagram, aber die Website überzeugte nicht und Terminanfragen blieben aus.",
+      solution: "Editoriales Design, übersichtliche Preisliste, Online-Terminanfrage und optimierte Texte für lokale Suchanfragen.",
+      quote: "Die meisten Neukundinnen kommen inzwischen direkt über die Website.",
+      visits: [420, 440, 410, 455, 470, 450, 690, 880, 1010, 1150, 1240, 1320],
+      inquiries: [6, 5, 7, 6, 6, 7, 11, 14, 17, 19, 20, 22],
+      loadTime: { before: "5,6 s", after: "0,9 s" },
+    },
+    {
+      key: "garten",
+      category: "Garten & Landschaft",
+      title: "Hochwertige Projekte für einen Gartengestalter",
+      challenge: "Hochwertige Arbeit, aber ein Auftritt, der das nicht zeigte – und kaum Anfragen für größere Projekte.",
+      solution: "Großformatige Projektbilder, klare Leistungsstruktur, Ablauf-Erklärung und gezielte Optimierung auf die Region.",
+      quote: "Die Anfragen sind deutlich gestiegen – und es sind genau die Projekte, die wir machen wollen.",
+      visits: [260, 280, 300, 290, 310, 305, 470, 600, 720, 800, 860, 930],
+      inquiries: [2, 3, 2, 3, 3, 3, 5, 7, 8, 9, 10, 11],
+      loadTime: { before: "6,2 s", after: "1,2 s" },
+    },
+  ],
+} as const;
+
+/* ------------------------------------------------------------------ */
+/* Google Analytics (nur nach Einwilligung)                            */
+/* ------------------------------------------------------------------ */
+
+export const analytics = {
+  /** GA4-Mess-ID. Leer lassen, um Analytics komplett zu deaktivieren. */
+  measurementId: "G-HH31N2CHBV",
+  /** Speicherschlüssel für die Einwilligung im Browser (technisch notwendig) */
+  storageKey: "pds-consent-v1",
+  banner: {
+    title: "Darf ich mitlesen, wie die Website genutzt wird?",
+    text: "Mit deiner Einwilligung nutze ich Google Analytics, um anonymisiert zu verstehen, welche Inhalte gefragt sind. Dabei werden Cookies gesetzt und Daten an Google (auch in die USA) übermittelt. Du kannst deine Entscheidung jederzeit in den Cookie-Einstellungen ändern.",
+    accept: "Akzeptieren",
+    decline: "Ablehnen",
+  },
 } as const;
