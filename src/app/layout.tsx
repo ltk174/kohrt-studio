@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import { site, owner } from "@/config/site";
 import { inter, instrumentSerif, manrope } from "./fonts";
 import "./globals.css";
@@ -64,6 +65,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           {"document.documentElement.classList.add('js')"}
         </Script>
         {children}
+        <Analytics />
       </body>
     </html>
   );
